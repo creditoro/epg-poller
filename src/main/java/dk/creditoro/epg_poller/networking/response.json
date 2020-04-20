@@ -1,0 +1,837 @@
+{
+  "channels": [
+    {
+      "id": "1",
+      "title": "DR1",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/1.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/1.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/1.svg",
+      "sort": 1
+    },
+    {
+      "id": "3",
+      "title": "TV 2 DANMARK",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/3.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/3.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/3.svg",
+      "lang": "da",
+      "sort": 2
+    },
+    {
+      "id": "5",
+      "title": "TV3",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/5.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/5.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/5.svg",
+      "sort": 3
+    },
+    {
+      "id": "133",
+      "title": "TV 2 NEWS",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/133.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/133.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/133.svg",
+      "lang": "da",
+      "sort": 4
+    },
+    {
+      "id": "2",
+      "title": "DR2",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/2.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/2.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/2.svg",
+      "sort": 5
+    },
+    {
+      "id": "77",
+      "title": "TV 2 SPORT",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/77.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/77.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/77.svg",
+      "lang": "da",
+      "sort": 6
+    },
+    {
+      "id": "2147483561",
+      "title": "TV 2 SPORT X",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/2147483561.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/2147483561.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/2147483561.svg",
+      "lang": "da",
+      "sort": 7
+    },
+    {
+      "id": "31",
+      "title": "TV 2 CHARLIE",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/31.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/31.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/31.svg",
+      "lang": "da",
+      "sort": 8
+    },
+    {
+      "id": "12566",
+      "title": "TV 2 FRI",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/12566.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/12566.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/12566.svg",
+      "lang": "da",
+      "sort": 9
+    },
+    {
+      "id": "4",
+      "title": "TV 2 ZULU",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/4.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/4.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/4.svg",
+      "lang": "da",
+      "sort": 10
+    },
+    {
+      "id": "70",
+      "title": "Discovery Channel",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/70.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/70.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/70.svg",
+      "sort": 11
+    },
+    {
+      "id": "6",
+      "title": "TV3+",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/6.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/6.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/6.svg",
+      "sort": 13
+    },
+    {
+      "id": "8",
+      "title": "Kanal 4",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/8.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/8.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/8.svg",
+      "sort": 14
+    },
+    {
+      "id": "7",
+      "title": "Kanal 5",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/7.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/7.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/7.svg",
+      "sort": 15
+    },
+    {
+      "id": "10066",
+      "title": "6’eren",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10066.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10066.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10066.svg",
+      "sort": 16
+    },
+    {
+      "id": "10153",
+      "title": "DR Ramasjang",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10153.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10153.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10153.svg",
+      "sort": 17
+    },
+    {
+      "id": "10093",
+      "title": "TV3 Puls",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10093.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10093.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10093.svg",
+      "sort": 19
+    },
+    {
+      "id": "156",
+      "title": "TV3 Sport",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/156.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/156.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/156.svg",
+      "sort": 20
+    },
+    {
+      "id": "15",
+      "title": "dk4",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/15.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/15.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/15.svg",
+      "sort": 21
+    },
+    {
+      "id": "2147483568",
+      "title": "TV 2 PLAY 1",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/2147483568.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/2147483568.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/2147483568.svg",
+      "lang": "da",
+      "sort": 101
+    },
+    {
+      "id": "2147483567",
+      "title": "TV 2 PLAY 2",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/2147483567.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/2147483567.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/2147483567.svg",
+      "lang": "da",
+      "sort": 102
+    },
+    {
+      "id": "2147483566",
+      "title": "TV 2 PLAY 3",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/2147483566.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/2147483566.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/2147483566.svg",
+      "lang": "da",
+      "sort": 103
+    },
+    {
+      "id": "2147483565",
+      "title": "TV 2 PLAY 4",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/2147483565.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/2147483565.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/2147483565.svg",
+      "lang": "da",
+      "sort": 104
+    },
+    {
+      "id": "2147483564",
+      "title": "TV 2 PLAY 5",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/2147483564.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/2147483564.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/2147483564.svg",
+      "lang": "da",
+      "sort": 105
+    },
+    {
+      "id": "2147483563",
+      "title": "TV 2 PLAY 6",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/2147483563.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/2147483563.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/2147483563.svg",
+      "lang": "da",
+      "sort": 106
+    },
+    {
+      "id": "2147483562",
+      "title": "TV 2 PLAY 7",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/2147483562.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/2147483562.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/2147483562.svg",
+      "lang": "da",
+      "sort": 107
+    },
+    {
+      "id": "10070",
+      "title": "Viasat Series",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10070.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10070.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10070.svg",
+      "sort": 999999
+    },
+    {
+      "id": "12034",
+      "title": "TV3 SPORT 2 HD",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/12034.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/12034.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/12034.svg",
+      "sort": 999999
+    },
+    {
+      "id": "164",
+      "title": "3sat",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/164.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/164.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/164.svg",
+      "sort": 999999
+    },
+    {
+      "id": "93",
+      "title": "Animal Planet",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/93.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/93.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/93.svg",
+      "sort": 999999
+    },
+    {
+      "id": "162",
+      "title": "ARD",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/162.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/162.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/162.svg",
+      "sort": 999999
+    },
+    {
+      "id": "10104",
+      "title": "Arte",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10104.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10104.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10104.svg",
+      "sort": 999999
+    },
+    {
+      "id": "12396",
+      "title": "BBC Brit",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/12396.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/12396.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/12396.svg",
+      "sort": 999999
+    },
+    {
+      "id": "10061",
+      "title": "BBC Earth",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10061.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10061.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10061.svg",
+      "sort": 999999
+    },
+    {
+      "id": "191",
+      "title": "BBC World",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/191.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/191.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/191.svg",
+      "sort": 999999
+    },
+    {
+      "id": "248",
+      "title": "Boomerang",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/248.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/248.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/248.svg",
+      "sort": 999999
+    },
+    {
+      "id": "25",
+      "title": "C More First",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/25.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/25.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/25.svg",
+      "sort": 999999
+    },
+    {
+      "id": "26",
+      "title": "C More Hits",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/26.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/26.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/26.svg",
+      "sort": 999999
+    },
+    {
+      "id": "201",
+      "title": "C More Series",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/201.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/201.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/201.svg",
+      "sort": 999999
+    },
+    {
+      "id": "10111",
+      "title": "CANAL9",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10111.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10111.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10111.svg",
+      "sort": 999999
+    },
+    {
+      "id": "117",
+      "title": "Discovery Science",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/117.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/117.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/117.svg",
+      "sort": 999999
+    },
+    {
+      "id": "37",
+      "title": "Eurosport 2",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/37.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/37.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/37.svg",
+      "sort": 999999
+    },
+    {
+      "id": "94",
+      "title": "National Geographic Channel",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/94.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/94.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/94.svg",
+      "sort": 999999
+    },
+    {
+      "id": "11572",
+      "title": "National Geographic Wild",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/11572.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/11572.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/11572.svg",
+      "sort": 999999
+    },
+    {
+      "id": "153",
+      "title": "Nickelodeon",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/153.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/153.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/153.svg",
+      "sort": 999999
+    },
+    {
+      "id": "10621",
+      "title": "SPORT1",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10621.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10621.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10621.svg",
+      "sort": 999999
+    },
+    {
+      "id": "185",
+      "title": "Cartoon",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/185.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/185.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/185.svg",
+      "sort": 999999
+    },
+    {
+      "id": "181",
+      "title": "CNN",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/181.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/181.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/181.svg",
+      "sort": 999999
+    },
+    {
+      "id": "15129",
+      "title": "Comedy Central",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/15129.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/15129.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/15129.svg",
+      "sort": 999999
+    },
+    {
+      "id": "147",
+      "title": "Discovery HD Showcase",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/147.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/147.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/147.svg",
+      "sort": 999999
+    },
+    {
+      "id": "116",
+      "title": "Discovery World",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/116.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/116.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/116.svg",
+      "sort": 999999
+    },
+    {
+      "id": "14",
+      "title": "Disney Channel sca.",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/14.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/14.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/14.svg",
+      "sort": 999999
+    },
+    {
+      "id": "157",
+      "title": "Disney Junior",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/157.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/157.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/157.svg",
+      "sort": 999999
+    },
+    {
+      "id": "74",
+      "title": "Disney XD",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/74.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/74.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/74.svg",
+      "sort": 999999
+    },
+    {
+      "id": "188",
+      "title": "NDR",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/188.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/188.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/188.svg",
+      "sort": 999999
+    },
+    {
+      "id": "11614",
+      "title": "TV SYD",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/11614.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/11614.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/11614.svg",
+      "sort": 999999
+    },
+    {
+      "id": "570",
+      "title": "Paramount Network",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/570.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/570.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/570.svg",
+      "lang": "da",
+      "sort": 999999
+    },
+    {
+      "id": "687",
+      "title": "Xee",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/687.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/687.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/687.svg",
+      "lang": "da",
+      "sort": 999999
+    },
+    {
+      "id": "174",
+      "title": "Eurosport 1",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/174.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/174.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/174.svg",
+      "sort": 999999
+    },
+    {
+      "id": "10341",
+      "title": "FOLKETINGET",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10341.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10341.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10341.svg",
+      "sort": 999999
+    },
+    {
+      "id": "10159",
+      "title": "HISTORY",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10159.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10159.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10159.svg",
+      "sort": 999999
+    },
+    {
+      "id": "15049",
+      "title": "Investigation Discovery",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/15049.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/15049.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/15049.svg",
+      "sort": 999999
+    },
+    {
+      "id": "10262",
+      "title": "Kanal Hovedstaden",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10262.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10262.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10262.svg",
+      "sort": 999999
+    },
+    {
+      "id": "11616",
+      "title": "Lorry",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/11616.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/11616.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/11616.svg",
+      "sort": 999999
+    },
+    {
+      "id": "71",
+      "title": "MTV",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/71.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/71.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/71.svg",
+      "sort": 999999
+    },
+    {
+      "id": "15032",
+      "title": "National Geographic People",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/15032.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/15032.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/15032.svg",
+      "sort": 999999
+    },
+    {
+      "id": "10455",
+      "title": "Nickelodeon Junior",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10455.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10455.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10455.svg",
+      "sort": 999999
+    },
+    {
+      "id": "130",
+      "title": "NRK1",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/130.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/130.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/130.svg",
+      "sort": 999999
+    },
+    {
+      "id": "129",
+      "title": "NRK2",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/129.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/129.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/129.svg",
+      "sort": 999999
+    },
+    {
+      "id": "10511",
+      "title": "ProSieben",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10511.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10511.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10511.svg",
+      "sort": 999999
+    },
+    {
+      "id": "161",
+      "title": "RTL",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/161.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/161.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/161.svg",
+      "sort": 999999
+    },
+    {
+      "id": "221",
+      "title": "RTL II",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/221.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/221.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/221.svg",
+      "sort": 999999
+    },
+    {
+      "id": "10510",
+      "title": "SAT1",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10510.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10510.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10510.svg",
+      "sort": 999999
+    },
+    {
+      "id": "10145",
+      "title": "SF-Kanalen",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10145.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10145.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10145.svg",
+      "sort": 999999
+    },
+    {
+      "id": "240",
+      "title": "SuperRTL",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/240.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/240.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/240.svg",
+      "sort": 999999
+    },
+    {
+      "id": "135",
+      "title": "SVT1",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/135.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/135.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/135.svg",
+      "sort": 999999
+    },
+    {
+      "id": "118",
+      "title": "TLC",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/118.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/118.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/118.svg",
+      "sort": 999999
+    },
+    {
+      "id": "10435",
+      "title": "TNT",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10435.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10435.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10435.svg",
+      "sort": 999999
+    },
+    {
+      "id": "215",
+      "title": "Travel Channel",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/215.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/215.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/215.svg",
+      "sort": 999999
+    },
+    {
+      "id": "136",
+      "title": "SVT2",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/136.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/136.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/136.svg",
+      "sort": 999999
+    },
+    {
+      "id": "11615",
+      "title": "TV FYN",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/11615.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/11615.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/11615.svg",
+      "sort": 999999
+    },
+    {
+      "id": "11611",
+      "title": "TV/MIDT-VEST",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/11611.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/11611.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/11611.svg",
+      "sort": 999999
+    },
+    {
+      "id": "11610",
+      "title": "TV2/Nord Salto",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/11610.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/11610.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/11610.svg",
+      "sort": 999999
+    },
+    {
+      "id": "12",
+      "title": "Viasat Film Family",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/12.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/12.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/12.svg",
+      "sort": 999999
+    },
+    {
+      "id": "165",
+      "title": "Viasat Golf",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/165.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/165.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/165.svg",
+      "sort": 999999
+    },
+    {
+      "id": "11617",
+      "title": "TV 2/Bornholm",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/11617.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/11617.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/11617.svg",
+      "sort": 999999
+    },
+    {
+      "id": "11612",
+      "title": "TV 2| Østjylland",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/11612.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/11612.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/11612.svg",
+      "sort": 999999
+    },
+    {
+      "id": "11613",
+      "title": "TV2 Øst",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/11613.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/11613.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/11613.svg",
+      "sort": 999999
+    },
+    {
+      "id": "111",
+      "title": "TV4 Sverige",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/111.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/111.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/111.svg",
+      "sort": 999999
+    },
+    {
+      "id": "12697",
+      "title": "TV5MONDE Europe",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/12697.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/12697.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/12697.svg",
+      "sort": 999999
+    },
+    {
+      "id": "219",
+      "title": "Vh1",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/219.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/219.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/219.svg",
+      "sort": 999999
+    },
+    {
+      "id": "19",
+      "title": "Viasat Explorer",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/19.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/19.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/19.svg",
+      "sort": 999999
+    },
+    {
+      "id": "9",
+      "title": "Viasat Film",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/9.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/9.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/9.svg",
+      "sort": 999999
+    },
+    {
+      "id": "10",
+      "title": "Viasat Film Action",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/10.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/10.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/10.svg",
+      "sort": 999999
+    },
+    {
+      "id": "11",
+      "title": "Viasat Film Hits",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/11.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/11.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/11.svg",
+      "sort": 999999
+    },
+    {
+      "id": "39",
+      "title": "Viasat History",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/39.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/39.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/39.svg",
+      "sort": 999999
+    },
+    {
+      "id": "20",
+      "title": "Viasat Nature",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/20.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/20.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/20.svg",
+      "sort": 999999
+    },
+    {
+      "id": "218",
+      "title": "VOX",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/218.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/218.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/218.svg",
+      "sort": 999999
+    },
+    {
+      "id": "163",
+      "title": "ZDF",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/163.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/163.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/163.svg",
+      "sort": 999999
+    },
+    {
+      "id": "689",
+      "title": "Viasat Ultra",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/689.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/689.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/689.svg",
+      "lang": "da",
+      "sort": 999999
+    },
+    {
+      "id": "142",
+      "title": "TV 2 Norge",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/142.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/142.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/142.svg",
+      "sort": 999999
+    },
+    {
+      "id": "12948",
+      "title": "TV3 Max",
+      "icon": "https://epg-images.tv2.dk/channellogos/icon/12948.png",
+      "logo": "https://epg-images.tv2.dk/channellogos/logo/12948.png",
+      "svgLogo": "https://epg-images.tv2.dk/channellogos/svg/12948.svg",
+      "sort": 999999
+    }
+  ]
+}

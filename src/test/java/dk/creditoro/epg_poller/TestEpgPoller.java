@@ -1,5 +1,6 @@
-package dk.creditoro.epgPoller;
+package dk.creditoro.epg_poller;
 
+import dk.creditoro.epg_poller.core.EPGPoller;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,7 +9,7 @@ class TestEpgPoller {
 
     @Test
     void testConstructor() {
-		EpgPoller epg =  new EpgPoller();
+		EPGPoller epg =  new EPGPoller();
 		System.out.println("EPG: " + epg);
 		assertEquals(7, 7);
 	}
@@ -16,7 +17,7 @@ class TestEpgPoller {
 
     @Test
     void testConection() {
-		EpgPoller epg = new EpgPoller();
+		EPGPoller epg = new EPGPoller();
 		System.out.println("EPG: " + epg);
 		assertEquals(7, 7);
 	}
