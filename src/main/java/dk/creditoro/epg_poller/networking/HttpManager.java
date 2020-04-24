@@ -27,7 +27,7 @@ public class HttpManager {
     }
 
     public TVTidChannels getTvTidChannels() {
-        LOGGER.info("Getting TV tid channels.");
+        LOGGER.info("Getting TVTid channels.");
         var response = Unirest
                 .get("https://tvtid-api.api.tv2.dk/api/tvtid/v1/schedules/channels");
         var obj = response.asObject(TVTidChannels.class);
@@ -46,22 +46,22 @@ public class HttpManager {
     }
 
     public int deleteChannel(String identifier) {
-		LOGGER.log(Level.INFO, "Deleting identifier: ", identifier);
+		LOGGER.log(Level.INFO, "Deleting identifier: {0}", identifier);
         var response = Unirest
                 .delete("https://api.creditoro.nymann.dev/channels/" + identifier)
                 .header(AUTHORIZATION, token);
 		var jsonResponse = response.asJson().getStatus();
-		LOGGER.log(Level.INFO, "The indentifie maybe delted look at the respone: ", jsonResponse);
+		LOGGER.log(Level.INFO, "The identifier maybe deleted, look at the respone: {0}", jsonResponse);
 		return jsonResponse;
     }
 
     public CreditoroChannel[] getChannels(String route, String query) {
-		LOGGER.log(Level.INFO, "Getting the channel: ", query);
+		LOGGER.log(Level.INFO, "Getting the channel: {0}", query);
         var response = Unirest
                 .get(String.format(route))
 				.queryString("q", query)
                 .header(AUTHORIZATION, token);
-		LOGGER.log(Level.INFO, "Got the channels with: ", query);
+		LOGGER.log(Level.INFO, "Got the channels with: {0}", query);
 		return response.asObject(CreditoroChannel[].class).getBody();
     }
 
