@@ -7,9 +7,9 @@ public class TVTidChannel {
     String logo;
     String svgLogo;
     String lang;
-    String sort;
+    int sort;
 
-    public TVTidChannel(int id, String title, String icon, String logo, String svgLogo, String lang, String sort) {
+    public TVTidChannel(int id, String title, String icon, String logo, String svgLogo, String lang, int sort) {
         this.id = id;
         this.title = title;
         this.icon = icon;
