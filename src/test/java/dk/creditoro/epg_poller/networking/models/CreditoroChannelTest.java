@@ -1,11 +1,10 @@
-package dk.creditoro.epg_poller.networking;
+package dk.creditoro.epg_poller.networking.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
-import dk.creditoro.epg_poller.networking.models.CreditoroChannel;
 
 /**
 * CreditoroChannelTest

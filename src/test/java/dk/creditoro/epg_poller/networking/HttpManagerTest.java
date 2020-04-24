@@ -31,7 +31,7 @@ class HttpManagerTest {
 		//Create the channel that we are testing
 		var channel = new CreditoroChannel("testChannel", "testURL");
 		// Makes sure to delte the channel before we test if it can post.
-		var getRespone = httpManager.getChannels("https://api.creditoro.nymann.dev/channels", channel.getName());
+		var getRespone = httpManager.getChannels("https://api.creditoro.nymann.dev/channels/", channel.getName());
 		if (getRespone.length != 0){
 			httpManager.deleteChannel( getRespone[0].getIdentifier() );
 		}
@@ -42,7 +42,7 @@ class HttpManagerTest {
 		var dublicatedResponeChannel = httpManager.postChannel(channel);
 		assertFalse(channel.equals(dublicatedResponeChannel), "Makes sure it can't post dublicate");
 		// Delte the channel 
-		getRespone = httpManager.getChannels("https://api.creditoro.nymann.dev/channels", channel.getName());
+		getRespone = httpManager.getChannels("https://api.creditoro.nymann.dev/channels/", channel.getName());
 		var httpRespone = httpManager.deleteChannel( getRespone[0].getIdentifier() );
 		assertEquals(204, httpRespone, "Can not delte Channel");
 	}
