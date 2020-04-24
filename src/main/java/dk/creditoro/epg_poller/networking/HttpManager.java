@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class HttpManager {
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-	private static final String PATH = "/%s/{%s}";
+	private static final String AUTHORIZATION = "Authorization";
     private String token;
 
     public HttpManager() {
@@ -38,14 +38,10 @@ public class HttpManager {
         var response = Unirest
                 .post("https://api.creditoro.nymann.dev/channels/")
                 .body(channel)
-                .header("Authorization", token);
-		var JSONResponse = response.asObject(CreditoroChannel.class);
-        LOGGER.info(String.format("The Channel that got posted is: %s, and got http status: %s", channel.getName(), JSONResponse.getStatus()));
-        var channelResponse = JSONResponse.getBody();
-		LOGGER.info(String.format("Channel is: %s, String URL is: %s, Identifier is: %s", 
-					channelResponse.getName(), 
-					channelResponse.getIconUrl(),
-					channelResponse.getIdentifier()));
+                .header(AUTHORIZATION, token);
+		var jsonResponse = response.asObject(CreditoroChannel.class);
+		LOGGER.info(jsonResponse.getStatusText());
+        var channelResponse = jsonResponse.getBody();
 		return channelResponse;
     }
 
@@ -53,10 +49,10 @@ public class HttpManager {
         LOGGER.info("Deleting identifier: " + identifier + " on Creditoro API.");
         var response = Unirest
                 .delete("https://api.creditoro.nymann.dev/channels/" + identifier)
-                .header("Authorization", token);
-		var JsonResponse = response.asJson();
-        LOGGER.info(String.format("The identifier: %s, got http status: %s delted?", identifier, JsonResponse.getStatus()));
-		return JsonResponse.getStatus();
+                .header(AUTHORIZATION, token);
+		var jsonResponse = response.asJson().getStatus();
+        LOGGER.info(String.format("The identifier: %s, got http status: %s delted?", identifier, jsonResponse));
+		return jsonResponse;
     }
 
     public CreditoroChannel[] getChannels(String route, String query) {
@@ -64,7 +60,7 @@ public class HttpManager {
         var response = Unirest
                 .get(String.format(route))
 				.queryString("q", query)
-                .header("Authorization", token);
+                .header(AUTHORIZATION, token);
         LOGGER.info(String.format("The Channel that is search for is: %s, and got http status: %s", query, response.asJson().getStatus()));
 		return response.asObject(CreditoroChannel[].class).getBody();
     }
