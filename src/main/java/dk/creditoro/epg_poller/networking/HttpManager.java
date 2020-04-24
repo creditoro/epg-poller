@@ -6,6 +6,7 @@ import kong.unirest.Unirest;
 import kong.unirest.UnirestConfigException;
 
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class HttpManager {
@@ -41,27 +42,26 @@ public class HttpManager {
                 .header(AUTHORIZATION, token);
 		var jsonResponse = response.asObject(CreditoroChannel.class);
 		LOGGER.info(jsonResponse.getStatusText());
-        var channelResponse = jsonResponse.getBody();
-		return channelResponse;
+		return jsonResponse.getBody();
     }
 
     public int deleteChannel(String identifier) {
-        LOGGER.info("Deleting identifier: " + identifier + " on Creditoro API.");
+		LOGGER.log(Level.INFO, "Deleting identifier: ", identifier);
         var response = Unirest
                 .delete("https://api.creditoro.nymann.dev/channels/" + identifier)
                 .header(AUTHORIZATION, token);
 		var jsonResponse = response.asJson().getStatus();
-        LOGGER.info(String.format("The identifier: %s, got http status: %s delted?", identifier, jsonResponse));
+		LOGGER.log(Level.INFO, "The indentifie maybe delted look at the respone: ", jsonResponse);
 		return jsonResponse;
     }
 
     public CreditoroChannel[] getChannels(String route, String query) {
-        LOGGER.info("Getting the Channel " + query + " from Creditoro API.");
+		LOGGER.log(Level.INFO, "Getting the channel: ", query);
         var response = Unirest
                 .get(String.format(route))
 				.queryString("q", query)
                 .header(AUTHORIZATION, token);
-        LOGGER.info(String.format("The Channel that is search for is: %s, and got http status: %s", query, response.asJson().getStatus()));
+		LOGGER.log(Level.INFO, "Got the channels with: ", query);
 		return response.asObject(CreditoroChannel[].class).getBody();
     }
 
