@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class CreditoroChannel {
     private final String name;
+	private String identifier;
 
     @SerializedName("icon_url")
     private final String iconUrl;
@@ -12,12 +13,31 @@ public class CreditoroChannel {
         this.name = name;
         this.iconUrl = iconUrl;
     }
-
-    public String getName() {
-        return name;
+	
+    public CreditoroChannel(String name, String iconUrl, String identifier) {
+        this.name = name;
+        this.iconUrl = iconUrl;
+		this.identifier = identifier;
     }
 
-    public String getIconUrl() {
-        return iconUrl;
-    }
+	/**
+	* @return the name
+	*/
+	public String getName() {
+		return name;
+	}
+
+	/**
+	* @return the iconUrl
+	*/
+	public String getIconUrl() {
+		return iconUrl;
+	}
+
+	/**
+	* @return the identifier
+	*/
+	public String getIdentifier() {
+		return identifier;
+	}
 }
