@@ -20,6 +20,7 @@ public class TVTidChannel {
     }
 
 
+
     public String getTitle() {
         return title;
     }

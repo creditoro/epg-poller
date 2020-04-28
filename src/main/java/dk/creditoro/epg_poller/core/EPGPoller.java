@@ -2,9 +2,13 @@ package dk.creditoro.epg_poller.core;
 
 import dk.creditoro.epg_poller.networking.HttpManager;
 import dk.creditoro.epg_poller.networking.models.CreditoroChannel;
+import dk.creditoro.epg_poller.networking.models.CreditoroProduction;
 import dk.creditoro.epg_poller.networking.models.TVTidChannel;
+import dk.creditoro.epg_poller.networking.models.TVTidProductions;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -34,6 +38,14 @@ public class EPGPoller {
         LOGGER.info(":-)");
     }
 
+	public void startPostProductions(){
+        httpManager.login("string@string.dk", "string");
+		var productions = httpManager.getTvTidProductions(Arrays.asList(1,2), LocalDate.now()); 
+		var creditoroProductions = transform(productions);
+		loadProductions(creditoroProductions);
+        LOGGER.info(":-)");
+	}
+
 
     /**
      * Extract tv tid channel [ ].
@@ -58,6 +70,25 @@ public class EPGPoller {
     }
 
     /**
+     * Transform the list of channels from TVTid to a list of Creditoro compatible channels.
+     *
+     * @param channels the channels
+     */
+    private List<CreditoroProduction> transform(TVTidProductions[] channelproductions) {
+        var creditoroProductions = new ArrayList<CreditoroProduction>();
+		
+		for (var channel : channelproductions){
+			var productions = channel.getProductions();
+			var channelID = channel.getId();
+			for (var production : productions){ 
+				creditoroProductions.add(new CreditoroProduction(production.getTitle(),
+							"EPG_POLLER", "413a074e-e186-46c4-a581-b80e6efc5608"));
+		}
+		}
+        return creditoroProductions;
+    }
+
+    /**
      * Load.
      *
      * @param channels the channels
@@ -65,6 +96,17 @@ public class EPGPoller {
     private void load(Iterable<CreditoroChannel> channels) {
         for (var channel : channels) {
             httpManager.postChannel(channel);
+        }
+    }
+
+    /**
+     * Load.
+     *
+     * @param productions the productions
+     */
+    private void loadProductions(Iterable<CreditoroProduction> productions) {
+        for (var production : productions) {
+            httpManager.postProductions(production);
         }
     }
 }

@@ -1,5 +1,8 @@
 package dk.creditoro.epg_poller.networking.models;
 
+/**
+* TVTidChannels
+*/
 public class TVTidChannels {
     private final TVTidChannel[] channels;
 

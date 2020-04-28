@@ -1,10 +1,14 @@
 package dk.creditoro.epg_poller.networking;
 
 import dk.creditoro.epg_poller.networking.models.CreditoroChannel;
+import dk.creditoro.epg_poller.networking.models.CreditoroProduction;
 import dk.creditoro.epg_poller.networking.models.TVTidChannels;
+import dk.creditoro.epg_poller.networking.models.TVTidProductions;
 import kong.unirest.Unirest;
 import kong.unirest.UnirestConfigException;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +38,15 @@ public class HttpManager {
         return obj.getBody();
     }
 
+    public TVTidProductions[] getTvTidProductions(List<Integer> channelIdList, LocalDate date) {
+        LOGGER.info("Getting TVTid productions.");
+        var response = Unirest
+                .get(String.format("https://tvtid-api.api.tv2.dk/api/tvtid/v1/epg/dayviews/%s", date))
+				.queryString("ch", channelIdList);
+		LOGGER.log(Level.INFO, "Status code: {0}", response.asJson().getStatus());
+		return response.asObject(TVTidProductions[].class).getBody();
+    }
+
     public CreditoroChannel postChannel(CreditoroChannel channel) {
         LOGGER.info("Posting to Creditoro API.");
         var response = Unirest
@@ -41,6 +54,17 @@ public class HttpManager {
                 .body(channel)
                 .header(AUTHORIZATION, token);
 		var jsonResponse = response.asObject(CreditoroChannel.class);
+		LOGGER.info(jsonResponse.getStatusText());
+		return jsonResponse.getBody();
+    }
+
+    public CreditoroProduction postProductions(CreditoroProduction channel) {
+        LOGGER.info("Posting Production to Creditoro API.");
+        var response = Unirest
+                .post("https://api.creditoro.nymann.dev/channels/")
+                .body(channel)
+                .header(AUTHORIZATION, token);
+		var jsonResponse = response.asObject(CreditoroProduction.class);
 		LOGGER.info(jsonResponse.getStatusText());
 		return jsonResponse.getBody();
     }

@@ -1,0 +1,115 @@
+{
+    "program": {
+        "categories": ["Kultur og Natur", "Programmer"],
+        "desc": "Lasse Petersen fra Aabenraa Antikvitetshandel får en meget sjælden salmebog mellem hænderne. Søren Falk fra Quriosa er kørt til Jylland for at prøve at fylde bilen helt op med gamle malerier. Og rekvisitøren Sussie Vig skal på jagt efter gamle og udgåede stel til Royal Copenhagens julevindue.",
+        "id": "17533488",
+        "imgs": {
+            "images": [
+                {
+                    "height": 0,
+                    "scaleUrl": "https://tv2i.dk/users/tvtid/images/2969cae2-efcf-4c13-9cca-46515cd513ab",
+                    "url": "https://tv2i.dk/users/tvtid/images/2969cae2-efcf-4c13-9cca-46515cd513ab",
+                    "width": 0
+                },
+                {
+                    "height": 0,
+                    "scaleUrl": "https://tv2i.dk/users/tvtid/images/fa3b154e-f142-402e-9492-c1057aef1379",
+                    "url": "https://tv2i.dk/users/tvtid/images/fa3b154e-f142-402e-9492-c1057aef1379",
+                    "width": 0
+                },
+                {
+                    "height": 0,
+                    "scaleUrl": "https://tv2i.dk/users/tvtid/images/b76675a2-20c0-4950-8c8d-c9fc3530524a",
+                    "url": "https://tv2i.dk/users/tvtid/images/b76675a2-20c0-4950-8c8d-c9fc3530524a",
+                    "width": 0
+                },
+                {
+                    "height": 0,
+                    "scaleUrl": "https://tv2i.dk/users/tvtid/images/eb331542-046e-45fd-8592-3bf545b64346",
+                    "url": "https://tv2i.dk/users/tvtid/images/eb331542-046e-45fd-8592-3bf545b64346",
+                    "width": 0
+                },
+                {
+                    "height": 0,
+                    "scaleUrl": "https://tv2i.dk/users/tvtid/images/4b5bc186-6f0e-4728-ac2f-6db76c11f74d",
+                    "url": "https://tv2i.dk/users/tvtid/images/4b5bc186-6f0e-4728-ac2f-6db76c11f74d",
+                    "width": 0
+                },
+                {
+                    "height": 0,
+                    "scaleUrl": "https://tv2i.dk/users/tvtid/images/1a19d5e8-6360-4dc8-a5d3-42d932762c9c",
+                    "url": "https://tv2i.dk/users/tvtid/images/1a19d5e8-6360-4dc8-a5d3-42d932762c9c",
+                    "width": 0
+                },
+                {
+                    "height": 0,
+                    "scaleUrl": "https://tv2i.dk/users/tvtid/images/923dc8c2-2c9d-493f-9ec6-9772d1f57eca",
+                    "url": "https://tv2i.dk/users/tvtid/images/923dc8c2-2c9d-493f-9ec6-9772d1f57eca",
+                    "width": 0
+                },
+                {
+                    "height": 0,
+                    "scaleUrl": "https://tv2i.dk/users/tvtid/images/e278520f-6f5e-4e68-abd2-bd917db79325",
+                    "url": "https://tv2i.dk/users/tvtid/images/e278520f-6f5e-4e68-abd2-bd917db79325",
+                    "width": 0
+                },
+                {
+                    "height": 0,
+                    "scaleUrl": "https://tv2i.dk/users/tvtid/images/1f56bd9c-9b83-4932-9c55-9d6906bf4150",
+                    "url": "https://tv2i.dk/users/tvtid/images/1f56bd9c-9b83-4932-9c55-9d6906bf4150",
+                    "width": 0
+                },
+                {
+                    "height": 0,
+                    "scaleUrl": "https://tv2i.dk/users/tvtid/images/d4a40633-c68e-49e8-b9d0-704e724e335a",
+                    "url": "https://tv2i.dk/users/tvtid/images/d4a40633-c68e-49e8-b9d0-704e724e335a",
+                    "width": 0
+                },
+                {
+                    "height": 0,
+                    "scaleUrl": "https://tv2i.dk/users/tvtid/images/ecb4232f-ac97-4f5d-a85f-8fa0848ad200",
+                    "url": "https://tv2i.dk/users/tvtid/images/ecb4232f-ac97-4f5d-a85f-8fa0848ad200",
+                    "width": 0
+                }
+            ]
+        },
+        "locations": {
+            "schedules": [
+                {
+                    "categories": ["Kultur og Natur", "Programmer"],
+                    "channelId": "1",
+                    "live": false,
+                    "premiere": false,
+                    "rerun": false,
+                    "start": 1588063500,
+                    "stop": 1588065300,
+                    "title": "Skattejægerne"
+                },
+                {
+                    "categories": ["Kultur og Natur", "Programmer"],
+                    "channelId": "1",
+                    "live": false,
+                    "premiere": false,
+                    "rerun": true,
+                    "start": 1588209900,
+                    "stop": 1588211700,
+                    "title": "Skattejægerne"
+                }
+            ],
+            "vods": []
+        },
+        "orgTitle": "Skattejægerne 2018 -  sæson 11",
+        "prodCountry": "",
+        "prodYear": 2018,
+        "references": [
+            {"authority": "ritzau", "key": "17533488", "type": "extId"},
+            {"authority": "ritzau", "key": "17533488", "type": "productcode"}
+        ],
+        "series": {"episode": 8, "season": 0},
+        "seriesId": "120213",
+        "teaser": "",
+        "title": "Skattejægerne",
+        "ttvTexted": true,
+        "url": "https://tv.tv2.dk/program/1/17533488"
+    }
+}
