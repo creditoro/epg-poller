@@ -14,6 +14,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class HttpManager {
+	private static final String WEBURLTV2 = "https://tvtid-api.api.tv2.dk/api/tvtid/v1/%s";
+	private static final String APIURL = "https://api.creditoro.nymann.dev/%s";
+	private static final String CHANNEL = "channels/";
+	private static final String PRODUCTION = "productions/";
+	private static final String USERS = "users/";
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	private static final String AUTHORIZATION = "Authorization";
     private String token;
@@ -33,7 +38,7 @@ public class HttpManager {
     public TVTidChannels getTvTidChannels() {
         LOGGER.info("Getting TVTid channels.");
         var response = Unirest
-                .get("https://tvtid-api.api.tv2.dk/api/tvtid/v1/schedules/channels");
+                .get(String.format(WEBURLTV2, "schedules/channels"));
         var obj = response.asObject(TVTidChannels.class);
         return obj.getBody();
     }
@@ -41,7 +46,7 @@ public class HttpManager {
     public TVTidProductions[] getTvTidProductions(List<Integer> channelIdList, LocalDate date) {
         LOGGER.info("Getting TVTid productions.");
         var response = Unirest
-                .get(String.format("https://tvtid-api.api.tv2.dk/api/tvtid/v1/epg/dayviews/%s", date))
+                .get(String.format(WEBURLTV2, "epg/dayviews/") + date)
 				.queryString("ch", channelIdList);
 		LOGGER.log(Level.INFO, "Status code: {0}", response.asJson().getStatus());
 		return response.asObject(TVTidProductions[].class).getBody();
@@ -50,7 +55,7 @@ public class HttpManager {
     public CreditoroChannel postChannel(CreditoroChannel channel) {
         LOGGER.info("Posting to Creditoro API.");
         var response = Unirest
-                .post("https://api.creditoro.nymann.dev/channels/")
+                .post(String.format(APIURL, CHANNEL))
                 .body(channel)
                 .header(AUTHORIZATION, token);
 		var jsonResponse = response.asObject(CreditoroChannel.class);
@@ -61,7 +66,7 @@ public class HttpManager {
     public CreditoroProduction postProductions(CreditoroProduction channel) {
         LOGGER.info("Posting Production to Creditoro API.");
         var response = Unirest
-                .post("https://api.creditoro.nymann.dev/channels/")
+                .post(String.format(APIURL, PRODUCTION))
                 .body(channel)
                 .header(AUTHORIZATION, token);
 		var jsonResponse = response.asObject(CreditoroProduction.class);
@@ -72,7 +77,7 @@ public class HttpManager {
     public int deleteChannel(String identifier) {
 		LOGGER.log(Level.INFO, "Deleting identifier: {0}", identifier);
         var response = Unirest
-                .delete("https://api.creditoro.nymann.dev/channels/" + identifier)
+                .delete(String.format(APIURL, CHANNEL)+ identifier)
                 .header(AUTHORIZATION, token);
 		var jsonResponse = response.asJson().getStatus();
 		LOGGER.log(Level.INFO, "The identifier maybe deleted, look at the respone: {0}", jsonResponse);
@@ -91,7 +96,7 @@ public class HttpManager {
 
     public boolean login(String email, String password) {
         var response = Unirest
-                .post("https://api.creditoro.nymann.dev/users/login")
+                .post(String.format(APIURL, USERS)+ "login")
                 .body(Map.of("email", email, "password", password)).asJson();
         var getBody = response.getBody();
         if (getBody == null) {

@@ -4,15 +4,15 @@ package dk.creditoro.epg_poller.networking.models;
 * TVTidProduction
 */
 public class TVTidProduction {
-	private long start;
-	private long stop;
-	private String[] categories;
-	private String id;
-	private String title;
-	private boolean availableAsVod;
-	private boolean rerun;
-	private boolean premiere;
-	private boolean live;
+	long start;
+	long stop;
+	String[] categories;
+	String id;
+	String title;
+	boolean availableAsVod;
+	boolean rerun;
+	boolean premiere;
+	boolean live;
 
 	public TVTidProduction(long start, long stop, String[] categories, 
 			String id, String title, boolean availableAsVod, boolean rerun, 

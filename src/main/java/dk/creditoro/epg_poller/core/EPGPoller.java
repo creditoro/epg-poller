@@ -79,7 +79,6 @@ public class EPGPoller {
 		
 		for (var channel : channelproductions){
 			var productions = channel.getProductions();
-			var channelID = channel.getId();
 			for (var production : productions){ 
 				creditoroProductions.add(new CreditoroProduction(production.getTitle(),
 							"EPG_POLLER", "413a074e-e186-46c4-a581-b80e6efc5608"));

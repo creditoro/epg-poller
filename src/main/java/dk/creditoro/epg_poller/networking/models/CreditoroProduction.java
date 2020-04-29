@@ -1,21 +1,24 @@
 package dk.creditoro.epg_poller.networking.models;
 
+import com.google.gson.annotations.SerializedName;
 
 /**
 * CreditoroProductions
 */
 public class CreditoroProduction {
-	private String title;
-	private String producer_id;
-	private String channel_id;
-	private String identifier;
-	private Object producer;
-	private Object channel;
+	String title;
+    @SerializedName("producer_id")
+	String producerId;
+    @SerializedName("channel_id")
+	String channelId;
+	String identifier;
+	Object producer;
+	Object channel;
 
-	public CreditoroProduction(String title, String producer_id, String channel_id){
+	public CreditoroProduction(String title, String producerId, String channelId){
 		this.title = title;
-		this.producer_id = producer_id;
-		this.channel_id = channel_id;
+		this.producerId = producerId;
+		this.channelId = channelId;
 	}
 
 	public CreditoroProduction(String identifier, String title, Object producer, Object channel){

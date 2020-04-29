@@ -24,4 +24,9 @@ public class EPGPollerTest {
 	void runningEPGPoller(){
 		assertDoesNotThrow(() -> epgPoller.start(), "EPGPoller can not run, check the assertMessage");
 	}
+
+	@Test
+	void runningEPGPollerProduction(){
+		assertDoesNotThrow(() -> epgPoller.startPostProductions(), "EPGPoller can not run, check the assertMessage");
+	}
 }
