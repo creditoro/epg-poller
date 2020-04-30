@@ -1,0 +1,14 @@
+version: "3.7"
+
+services: 
+  creditoro_epg_poller:
+    container_name: creditoro_epg_poller
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile
+    command: java -jar target/epg_poller-0.0.1.jar
+
+networks:
+  default:
+    external:
+      name: bridge
