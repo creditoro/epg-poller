@@ -6,9 +6,11 @@ services:
     build: 
       context: .
       dockerfile: docker/Dockerfile
-    command: java -jar target/epg_poller-0.0.1.jar
+    command: mvn exec:java -D"exec.mainClass"="dk.creditoro.epg_poller.RunEPGPoller"
+    networks:
+      - web
 
 networks:
-  default:
+  web:
     external:
-      name: bridge
+      name: web
