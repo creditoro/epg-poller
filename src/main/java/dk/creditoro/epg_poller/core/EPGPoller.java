@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -40,8 +41,14 @@ public class EPGPoller {
 
 	public void startPostProductions(){
         httpManager.login("string@string.dk", "string");
-		var productions = httpManager.getTvTidProductions(Arrays.asList(1,2), LocalDate.now()); 
-		var creditoroProductions = transform(productions);
+        var tvTidChannels = extract();
+		List<Integer> tvTidChannelsIds = new ArrayList<>();
+		for (TVTidChannel tvTidChannel : tvTidChannels) {
+			tvTidChannelsIds.add(tvTidChannel.getId());
+		}
+		var productions = httpManager.getTvTidProductions(tvTidChannelsIds, LocalDate.now()); 
+		var productionWithDescription = httpManager.getTvTidProductions(productions);
+		var creditoroProductions = transform(productions, "6ed67a28-f288-492b-8947-d9d0e9539608");
 		loadProductions(creditoroProductions);
         LOGGER.info(":-)");
 	}
@@ -70,23 +77,38 @@ public class EPGPoller {
     }
 
     /**
-     * Transform the list of channels from TVTid to a list of Creditoro compatible channels.
+     * Transform the list of productions from TVTid to a list of Creditoro compatible productions.
      *
-     * @param channels the channels
+     * @param productions the productions
      */
-    private List<CreditoroProduction> transform(TVTidProductions[] channelproductions) {
-        var creditoroProductions = new ArrayList<CreditoroProduction>();
-		
-		for (var channel : channelproductions){
-			var productions = channel.getProductions();
-			for (var production : productions){ 
-				creditoroProductions.add(new CreditoroProduction(production.getTitle(),
-							"EPG_POLLER", "413a074e-e186-46c4-a581-b80e6efc5608"));
-		}
-		}
-        return creditoroProductions;
-    }
+	private List<CreditoroProduction> transform(TVTidProductions[] channelproductions, String producerIdentifier) {
+		var creditoroProductions = new ArrayList<CreditoroProduction>();
+		var creditoroChannels = Arrays.asList(httpManager.getChannels(""));
+		var tvTidChannels = httpManager.getTvTidChannels();
 
+		for (TVTidProductions channel : channelproductions){
+			for (var production : channel.getProductions()){ 
+
+				if (tvTidChannels == null){
+					System.out.println("Channel is null");
+				}
+				System.out.println("Production: " + production.getTitle() + " Id:"+ channel.getId());
+				var channelName = tvTidChannels.getChannel(channel.getId()).getTitle();
+				System.out.println("put Channel: " + channelName);
+				creditoroChannels.stream()
+					.filter(cChannel->cChannel.getName()
+							.contains(channelName)).
+					forEach(
+							s-> creditoroProductions.add(new CreditoroProduction(
+									production.getTitle(), producerIdentifier, s.getIdentifier(), "TEST TEST EPG EPG SHIIIIT :D "))
+							);
+
+
+
+			}
+		}
+		return creditoroProductions;
+	}
     /**
      * Load.
      *
@@ -105,7 +127,23 @@ public class EPGPoller {
      */
     private void loadProductions(Iterable<CreditoroProduction> productions) {
         for (var production : productions) {
-            httpManager.postProductions(production);
+			// If i could not post try again
+			int isSuccess = 200;
+			do {
+				isSuccess = httpManager.postProductions(production).getStatus();
+				LOGGER.log(Level.INFO, "Going to sleep, was a success? {0}", isSuccess);
+				if(!(200 <= isSuccess) & ! ( isSuccess <= 299)){
+					if( isSuccess == 429){
+						try {
+							Thread.sleep(5000);
+						} catch (InterruptedException e) {
+							LOGGER.info("Thread got woken UP?");
+						}
+					} else {
+						isSuccess = 200;
+					}
+				}
+			} while (!(200 <= isSuccess) & ! ( isSuccess <= 299));
         }
     }
 }
