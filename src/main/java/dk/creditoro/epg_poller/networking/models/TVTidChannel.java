@@ -29,4 +29,11 @@ public class TVTidChannel {
         return logo;
     }
 
+	/**
+	* @return the id
+	*/
+	public int getId() {
+		return id;
+	}
+
 }
