@@ -133,7 +133,7 @@ public class EPGPoller {
 				isSuccess = httpManager.postProductions(production).getStatus();
 				LOGGER.log(Level.INFO, "Going to sleep, was a success? {0}", isSuccess);
 				if(!(200 <= isSuccess) & ! ( isSuccess <= 299)){
-					if( isSuccess == 429){
+					if( isSuccess != 429){
 						try {
 							Thread.sleep(5000);
 						} catch (InterruptedException e) {

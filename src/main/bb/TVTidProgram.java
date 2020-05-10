@@ -1,38 +1,74 @@
 package dk.creditoro.epg_poller.networking.models;
 
+import java.util.List;
+
+import com.google.gson.annotations.*;
+
 /**
 * TvTidProgram
 */
 public class TVTidProgram {
-	String id;
-	String url;
-	String[] categories;
-	String desc;
-	String orgTitle;
-	String prodYear;
-	String prodCountry;
-	String teaser;
-	String audio;
-	Video video;
-	Images imgs;
-	Credits credits;
-	boolean ttvTexted;
-	References references;
+    @SerializedName("id")
+    @Expose
+    private String id;
+    @SerializedName("url")
+    @Expose
+    private String url;
+    @SerializedName("seriesId")
+    @Expose
+    private String seriesId;
+    @SerializedName("title")
+    @Expose
+    private String title;
+    @SerializedName("categories")
+    @Expose
+    private List<String> categories = null;
+    @SerializedName("desc")
+    @Expose
+    private String desc;
+    @SerializedName("orgTitle")
+    @Expose
+    private String orgTitle;
+    @SerializedName("prodYear")
+    @Expose
+    private int prodYear;
+    @SerializedName("prodCountry")
+    @Expose
+    private String prodCountry;
+    @SerializedName("teaser")
+    @Expose
+    private String teaser;
+    @SerializedName("series")
+    @Expose
+    private Series series;
+    @SerializedName("imgs")
+    @Expose
+    private Images imgs;
+    @SerializedName("locations")
+    @Expose
+    private Locations locations;
+    @SerializedName("ttvTexted")
+    @Expose
+    private boolean ttvTexted;
+    @SerializedName("references")
+    @Expose
+    private List<Reference> references = null;
 	
-	public TVTidProgram(String id, String url, String[] categories, String desc, String orgTitle, String prodYear, 
-			String prodCountry, String teaser, String audio, Video video, Images imgs, Credits credits ,boolean ttvTexted, References references){
+	public TVTidProgram(String id, String url, String title, List<String> categories, String desc, String orgTitle, int prodYear, 
+			String prodCountry, String teaser, Images imgs, boolean ttvTexted, List<Reference> references){
 		this.id = id;
 		this.url = url;
+		this.title = title;
 		this.categories = categories;
 		this.desc = desc;
 		this.orgTitle = orgTitle;
 		this.prodYear = prodYear;
 		this.prodCountry = prodCountry;
 		this.teaser = teaser;
-		this.audio = audio;
-		this.video = video;
+		// this.audio = audio;
+		// this.video = video;
 		this.imgs = imgs;
-		this.credits = credits;
+		// this.credits = credits;
 		this.ttvTexted = ttvTexted;
 		this.references = references;
 	}
@@ -56,6 +92,12 @@ public class TVTidProgram {
 	*/
 	public String getOrgTitle() {
 		return orgTitle;
+	}
+	/**
+	* @return the title
+	*/
+	public String getTitle() {
+		return title;
 	}
 }
 
@@ -155,14 +197,24 @@ class Schedules {
 /**
 *  Somekey type stuf I don't know what is
 */
-class References {
+class Reference {
 	String authority;
 	String type;
 	String key;
 
-	References(String authority, String type, String key){
+	Reference(String authority, String type, String key){
 		this.authority = authority;
 		this.type = type;
 		this.key = key;
 	}
+}
+
+class Series {
+    int episode;
+    int season;
+	Series(int episode, int season){
+		this.episode = episode;
+		this.season = season;
+	}
+
 }

@@ -1,10 +1,9 @@
 package dk.creditoro.epg_poller.networking;
 
 import dk.creditoro.epg_poller.networking.models.*;
-import kong.unirest.HttpResponse;
-import kong.unirest.RequestBodyEntity;
-import kong.unirest.Unirest;
-import kong.unirest.UnirestConfigException;
+import dk.creditoro.epg_poller.networking.models.program.*;
+// import dk.creditoro.epg_poller.networking.models.program.TVTidProgram;
+import kong.unirest.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -59,17 +58,26 @@ public class HttpManager {
 	public TVTidProductions[] getTvTidProductions(TVTidProductions[] productions){
 		List<TVTidProgram> programs = new ArrayList<>();
 		for (TVTidProductions tvTidProductions : productions) {
+			int i = 1;
 			for (var tvTidProduction : tvTidProductions.getProductions()) {
-				var responseAsTvTidProg = Unirest
-					.get(String.format(TVTIDPROGRAMS, WEBURLTV2, RESTVERSIONV1, tvTidProductions.getId(), tvTidProduction.getId())).asObject(TVTidProgram.class);
+				System.out.printf("Production Id: %s, Channel Id: %s, Channel Productions total: %s out off %s \n", tvTidProduction.getId(), tvTidProductions.getId(), i , tvTidProductions.getProductions().length);
+				i++;
+				System.out.printf(TVTIDPROGRAMS+"\n", WEBURLTV2, RESTVERSIONV1, tvTidProductions.getId(), tvTidProduction.getId());
+				var responseAsTvTidProg = Unirest.get(String.format(TVTIDPROGRAMS, WEBURLTV2, RESTVERSIONV1, tvTidProductions.getId(), tvTidProduction.getId())).
+					asObject(TVTidPrograms.class);
 				LOGGER.log(Level.INFO, "Status code: {0}", responseAsTvTidProg.getStatus());
-				programs.add(responseAsTvTidProg.getBody());
+				System.out.println("res: " + responseAsTvTidProg.getBody().getProgram().getId());
+				programs.add(responseAsTvTidProg.getBody().getProgram());
+				if (programs.size() > 0){
+				var test = programs.get(programs.size()-1);
+				System.out.println("program name: " + test.getTitle() + " Id:" + test.getId() + "\ndesc: " + test.getDesc());
+				}
 			}
 		}
-		System.out.println("All the programs we got");
-		for (var program : programs) {
-			System.out.println("program name: " + program.getOrgTitle() + " Id: " + program.getId() + " desc: " + program.getDesc());	
-		}
+		// System.out.println("All the programs we got");
+		// for (var program : programs) {
+		// 	System.out.println("program name: " + program.g + " Id: " + program.getId() + " desc: " + program.getDesc());	
+		// }
 
 		return null;
 	}
