@@ -92,7 +92,6 @@ public class EPGPoller {
 				// Gets the productions from the tvtid.dk
 				var productionWithDescription = httpManager.getTvTidProductionsWithDesc(tvTidProduction, tvTidProductions.getId());		
 				// Sets Identifier on a channel, for later posting it to creditoro api
-				System.out.printf("The identifier: %s", channelIdentifier);
 				productionWithDescription.setChannelId(channelIdentifier);
 				// Add to the list we return later
 				productionsList.add(productionWithDescription);
