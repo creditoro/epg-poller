@@ -55,32 +55,13 @@ public class HttpManager {
 		return responseAsTvTidProd.getBody();
     }
 
-	public TVTidProductions[] getTvTidProductions(TVTidProductions[] productions){
-		List<TVTidProgram> programs = new ArrayList<>();
-		for (TVTidProductions tvTidProductions : productions) {
-			int i = 1;
-			for (var tvTidProduction : tvTidProductions.getProductions()) {
-				System.out.printf("Production Id: %s, Channel Id: %s, Channel Productions total: %s out off %s \n", tvTidProduction.getId(), tvTidProductions.getId(), i , tvTidProductions.getProductions().length);
-				i++;
-				System.out.printf(TVTIDPROGRAMS+"\n", WEBURLTV2, RESTVERSIONV1, tvTidProductions.getId(), tvTidProduction.getId());
-				var responseAsTvTidProg = Unirest.get(String.format(TVTIDPROGRAMS, WEBURLTV2, RESTVERSIONV1, tvTidProductions.getId(), tvTidProduction.getId())).
-					asObject(TVTidPrograms.class);
-				LOGGER.log(Level.INFO, "Status code: {0}", responseAsTvTidProg.getStatus());
-				System.out.println("res: " + responseAsTvTidProg.getBody().getProgram().getId());
-				programs.add(responseAsTvTidProg.getBody().getProgram());
-				if (programs.size() > 0){
-				var test = programs.get(programs.size()-1);
-				System.out.println("program name: " + test.getTitle() + " Id:" + test.getId() + "\ndesc: " + test.getDesc());
-				}
-			}
-		}
-		// System.out.println("All the programs we got");
-		// for (var program : programs) {
-		// 	System.out.println("program name: " + program.g + " Id: " + program.getId() + " desc: " + program.getDesc());	
-		// }
-
-		return null;
-	}
+	public TVTidProgram getTvTidProductionsWithDesc(TVTidProduction tvTidProduction, int ChannelId){
+        LOGGER.info("Getting TVTid productions with description.");
+		var responseAsTvTidProg = Unirest.get(String.format(TVTIDPROGRAMS, WEBURLTV2, RESTVERSIONV1, ChannelId, tvTidProduction.getId())).
+			asObject(TVTidPrograms.class);
+		LOGGER.log(Level.INFO, "Status code: {0}", responseAsTvTidProg.getStatus());	
+		return responseAsTvTidProg.getBody().getProgram();
+	}		
 
     public CreditoroChannel postChannel(CreditoroChannel channel) {
         LOGGER.info("Posting to Creditoro API.");
@@ -93,15 +74,31 @@ public class HttpManager {
 		return jsonResponse.getBody();
     }
 
-    public HttpResponse<CreditoroProduction> postProductions(CreditoroProduction channel) {
-        LOGGER.info("Posting Production to Creditoro API.");
-        var response = Unirest
+    public CreditoroProduction postProductions(CreditoroProduction channel) {
+        LOGGER.log(Level.INFO, "Posting Production {0} to Creditoro API.", channel.getTitle());
+		int status = 200;
+		while(true){
+        var creditoroProduction = Unirest
                 .post(String.format(APIURL, PRODUCTION))
                 .body(channel)
-                .header(AUTHORIZATION, token);
-		var creditoroProduction = response.asObject(CreditoroProduction.class);
-		LOGGER.log(Level.INFO, "Got HttpResponse {0}", creditoroProduction.getStatus() );
-		return creditoroProduction;
+                .header(AUTHORIZATION, token)
+				.asObject(CreditoroProduction.class);
+			status = creditoroProduction.getStatus();
+			if ( 200 <= status & status <= 299){
+				LOGGER.log(Level.INFO, "Http status: {0}", status);
+				return creditoroProduction.getBody();
+			} else if (status == 429){
+				try {
+					LOGGER.log(Level.INFO, "Http Status: {0} and waiting", status);
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					LOGGER.info("Thread got woken UP?");
+				}
+			} else {
+				LOGGER.log(Level.WARNING, "Returning null, Http Status {0}", status);
+				return null;
+			}
+		} 
     }
 
     public int deleteChannel(String identifier) {
@@ -114,16 +111,32 @@ public class HttpManager {
 		return jsonResponse;
     }
 
-    public CreditoroChannel[] getChannels(String query) {
-		LOGGER.log(Level.INFO, "Getting the channel: {0}", query);
-        var response = Unirest
-                .get(String.format(APIURL, CHANNELS))
+	public CreditoroChannel[] getChannels(String query) {
+		LOGGER.log(Level.INFO, "Getting the channel: {0} from creditoro API", query);
+		int status = 200;
+		while(true){
+			var creditoroChannels = Unirest
+				.get(String.format(APIURL, CHANNELS))
 				.queryString("q", query)
-                .header(AUTHORIZATION, token);
-		var creditoroChannels = response.asObject(CreditoroChannel[].class);
-		LOGGER.log(Level.INFO, "Got the channels with: {0}", creditoroChannels.getStatus());
-		return creditoroChannels.getBody();
-    }
+				.header(AUTHORIZATION, token)
+				.asObject(CreditoroChannel[].class);
+			status = creditoroChannels.getStatus();
+			if ( 200 <= status & status <= 299){
+				LOGGER.log(Level.INFO, "Http status: {0}", status);
+				return creditoroChannels.getBody();
+			} else if (status == 429){
+				try {
+					LOGGER.log(Level.INFO, "Http Status: {0} and waiting", status);
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					LOGGER.info("Thread got woken UP?");
+				}
+			} else {
+				LOGGER.log(Level.WARNING, "Returning null, Http Status {0}", status);
+				return null;
+			}
+		}
+	} 
 
     public boolean login(String email, String password) {
         var response = Unirest
