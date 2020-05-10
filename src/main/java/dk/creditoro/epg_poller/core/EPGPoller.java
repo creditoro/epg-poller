@@ -5,11 +5,13 @@ import dk.creditoro.epg_poller.networking.models.CreditoroChannel;
 import dk.creditoro.epg_poller.networking.models.CreditoroProduction;
 import dk.creditoro.epg_poller.networking.models.TVTidChannel;
 import dk.creditoro.epg_poller.networking.models.TVTidProductions;
+import dk.creditoro.epg_poller.networking.models.program.TVTidProgram;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,13 +44,8 @@ public class EPGPoller {
 	public void startPostProductions(){
         httpManager.login("string@string.dk", "string");
         var tvTidChannels = extract();
-		List<Integer> tvTidChannelsIds = new ArrayList<>();
-		for (TVTidChannel tvTidChannel : tvTidChannels) {
-			tvTidChannelsIds.add(tvTidChannel.getId());
-		}
-		var productions = httpManager.getTvTidProductions(tvTidChannelsIds, LocalDate.now()); 
-		var productionWithDescription = httpManager.getTvTidProductions(productions);
-		var creditoroProductions = transform(productions, "6ed67a28-f288-492b-8947-d9d0e9539608");
+		var productionsWithDesc = extractProductions(tvTidChannels);
+		var creditoroProductions = transform(productionsWithDesc, "6ed67a28-f288-492b-8947-d9d0e9539608");
 		loadProductions(creditoroProductions);
         LOGGER.info(":-)");
 	}
@@ -63,6 +60,58 @@ public class EPGPoller {
         return httpManager.getTvTidChannels().getChannels();
     }
 
+
+	/**
+	 * Extract tv tid program [ ].
+	 *
+	 * @return the tv tid production [ ]
+	 */
+	private List<TVTidProgram> extractProductions(TVTidChannel[] tvTidChannels){
+
+		// Makes a channel Id list. It is used for tvitid to get each production description.
+		List<Integer> tvTidChannelsIds = new ArrayList<>();
+		// Mapping ChannelIdentifieres
+		Map<Integer, String> channelIdToTitle = new HashMap<>();
+		for (TVTidChannel tvTidChannel : tvTidChannels) {
+			tvTidChannelsIds.add(tvTidChannel.getId());
+			channelIdToTitle.put(tvTidChannel.getId(), tvTidChannel.getTitle());
+		}
+
+		// Gets the productions without description
+		var productions = httpManager.getTvTidProductions(tvTidChannelsIds, LocalDate.now()); 
+
+		// Gets the production with description
+		List<TVTidProgram> productionsList = new ArrayList<>();
+
+		// The tvTidProductions hold the productions[]
+		for (TVTidProductions tvTidProductions : productions) {
+			//The second one where we go throug each of production[]
+			for (var tvTidProduction : tvTidProductions.getProductions()) {
+				// Gets the identifier from the creditoro api
+				var channelIdentifier = getChannelIdentifier(channelIdToTitle.get(tvTidProductions.getId()));
+				// Gets the productions from the tvtid.dk
+				var productionWithDescription = httpManager.getTvTidProductionsWithDesc(tvTidProduction, tvTidProductions.getId());		
+				// Sets Identifier on a channel, for later posting it to creditoro api
+				System.out.printf("The identifier: %s", channelIdentifier);
+				productionWithDescription.setChannelId(channelIdentifier);
+				// Add to the list we return later
+				productionsList.add(productionWithDescription);
+			}
+		}
+		return productionsList;
+	}
+
+	/**
+	 * Extract Identifier from creditoro api.
+	 *
+	 * @return creditoro channel identifier
+	 */
+	private String getChannelIdentifier(String channelName){
+		var channelResponse = httpManager.getChannels(channelName);
+		return channelResponse[0].getIdentifier();
+	}
+
+
     /**
      * Transform the list of channels from TVTid to a list of Creditoro compatible channels.
      *
@@ -76,39 +125,22 @@ public class EPGPoller {
         return creditoroChannels;
     }
 
+
     /**
      * Transform the list of productions from TVTid to a list of Creditoro compatible productions.
      *
      * @param productions the productions
      */
-	private List<CreditoroProduction> transform(TVTidProductions[] channelproductions, String producerIdentifier) {
+	private List<CreditoroProduction> transform(List<TVTidProgram> tvTidProgramList, String producerIdentifier) {
 		var creditoroProductions = new ArrayList<CreditoroProduction>();
-		var creditoroChannels = Arrays.asList(httpManager.getChannels(""));
-		var tvTidChannels = httpManager.getTvTidChannels();
-
-		for (TVTidProductions channel : channelproductions){
-			for (var production : channel.getProductions()){ 
-
-				if (tvTidChannels == null){
-					System.out.println("Channel is null");
-				}
-				System.out.println("Production: " + production.getTitle() + " Id:"+ channel.getId());
-				var channelName = tvTidChannels.getChannel(channel.getId()).getTitle();
-				System.out.println("put Channel: " + channelName);
-				creditoroChannels.stream()
-					.filter(cChannel->cChannel.getName()
-							.contains(channelName)).
-					forEach(
-							s-> creditoroProductions.add(new CreditoroProduction(
-									production.getTitle(), producerIdentifier, s.getIdentifier(), "TEST TEST EPG EPG SHIIIIT :D "))
-							);
-
-
-
-			}
+		for (var program : tvTidProgramList){
+			creditoroProductions.add(new CreditoroProduction(program.getTitle(), producerIdentifier, 
+						program.getChannelId(), program.getDesc()));
 		}
 		return creditoroProductions;
 	}
+
+
     /**
      * Load.
      *
@@ -125,26 +157,10 @@ public class EPGPoller {
      *
      * @param productions the productions
      */
-    private void loadProductions(Iterable<CreditoroProduction> productions) {
-        for (var production : productions) {
-			// If i could not post try again
-			int isSuccess = 200;
-			do {
-				isSuccess = httpManager.postProductions(production).getStatus();
-				LOGGER.log(Level.INFO, "Going to sleep, was a success? {0}", isSuccess);
-				if(!(200 <= isSuccess) & ! ( isSuccess <= 299)){
-					if( isSuccess != 429){
-						try {
-							Thread.sleep(5000);
-						} catch (InterruptedException e) {
-							LOGGER.info("Thread got woken UP?");
-						}
-					} else {
-						isSuccess = 200;
-					}
-				}
-			} while (!(200 <= isSuccess) & ! ( isSuccess <= 299));
-        }
-    }
+	private void loadProductions(Iterable<CreditoroProduction> productions) {
+		for (var production : productions) {
+			httpManager.postProductions(production);
+		}
+	}
 }
 
