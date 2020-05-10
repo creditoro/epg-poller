@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class TVTidProgram {
 
+	private String channelId;
     @SerializedName("id")
     @Expose
     private String id;
@@ -52,6 +53,19 @@ public class TVTidProgram {
     @SerializedName("references")
     @Expose
     private List<Reference> references = null;
+
+	/**
+	* @return the channelId
+	*/
+	public String getChannelId() {
+		return channelId;
+	}
+	/**
+	* @param channelId the channelId to set
+	*/
+	public void setChannelId(String channelId) {
+		this.channelId = channelId;
+	}
 
     public String getId() {
         return id;
