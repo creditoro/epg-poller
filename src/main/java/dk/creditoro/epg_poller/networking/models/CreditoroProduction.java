@@ -29,5 +29,12 @@ public class CreditoroProduction {
 		this.producer = producer;
 		this.channel = channel;
 	}
+
+	/**
+	* @return the title
+	*/
+	public String getTitle() {
+		return title;
+	}
 		
 }
