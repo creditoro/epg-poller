@@ -70,17 +70,18 @@ public class HttpManager {
                 .body(channel)
                 .header(AUTHORIZATION, token);
 		var jsonResponse = response.asObject(CreditoroChannel.class);
-		LOGGER.info(jsonResponse.getStatusText());
+		LOGGER.log(Level.INFO, "Http status: {0}" , jsonResponse.getStatus());
 		return jsonResponse.getBody();
     }
 
-    public CreditoroProduction postProductions(CreditoroProduction channel) {
-        LOGGER.log(Level.INFO, "Posting Production {0} to Creditoro API.", channel.getTitle());
+    public CreditoroProduction postProductions(CreditoroProduction production) {
+        LOGGER.log(Level.INFO, "Posting Production: {0}, to Creditoro API.\n", production.getTitle());
+        LOGGER.log(Level.FINEST, "Posting Production: {0}, to Creditoro API.", production.toString());
 		int status = 200;
 		while(true){
         var creditoroProduction = Unirest
                 .post(String.format(APIURL, PRODUCTION))
-                .body(channel)
+                .body(production)
                 .header(AUTHORIZATION, token)
 				.asObject(CreditoroProduction.class);
 			status = creditoroProduction.getStatus();

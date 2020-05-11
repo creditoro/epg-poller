@@ -83,12 +83,15 @@ public class EPGPoller {
 		// Gets the production with description
 		List<TVTidProgram> productionsList = new ArrayList<>();
 
+		// Get a Map with Channel Name to Channel Identifier
+		var channelIdentifierMap = getChannelIdentifierMap("");
+
 		// The tvTidProductions hold the productions[]
 		for (TVTidProductions tvTidProductions : productions) {
 			//The second one where we go throug each of production[]
 			for (var tvTidProduction : tvTidProductions.getProductions()) {
 				// Gets the identifier from the creditoro api
-				var channelIdentifier = getChannelIdentifier(channelIdToTitle.get(tvTidProductions.getId()));
+				var channelIdentifier = channelIdentifierMap.get(channelIdToTitle.get(tvTidProductions.getId()));
 				// Gets the productions from the tvtid.dk
 				var productionWithDescription = httpManager.getTvTidProductionsWithDesc(tvTidProduction, tvTidProductions.getId());		
 				// Sets Identifier on a channel, for later posting it to creditoro api
@@ -105,9 +108,14 @@ public class EPGPoller {
 	 *
 	 * @return creditoro channel identifier
 	 */
-	private String getChannelIdentifier(String channelName){
+	private Map<String,String> getChannelIdentifierMap(String channelName){
 		var channelResponse = httpManager.getChannels(channelName);
-		return channelResponse[0].getIdentifier();
+
+		Map<String,String> channelIdentifierMap = new HashMap<>();
+		for (CreditoroChannel creditoroChannel : channelResponse) {
+			channelIdentifierMap.put(creditoroChannel.getName(), creditoroChannel.getIdentifier());
+		}
+		return channelIdentifierMap;
 	}
 
 

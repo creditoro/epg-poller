@@ -36,5 +36,16 @@ public class CreditoroProduction {
 	public String getTitle() {
 		return title;
 	}
+
+	@Override
+	public String toString(){
+		// return String.format("\n | Title: %35s | ProducerIdentifier: %50s,\n | ChannelIdentifieres: %35s, | Description: %50s |", 
+		// 		title, producerId, channelId, description);
+		return String.format("\n| %15s - %35s |\n| %15s - %35s |\n| %15s - %35s |\n| %15s - %35s |",
+				"Title", title, 
+				"ProducerIdentifier", producerId, 
+				"ChannelIdentifieres", channelId,
+				"Description" ,description);
+	}
 		
 }
