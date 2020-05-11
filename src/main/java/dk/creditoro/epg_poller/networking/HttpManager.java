@@ -144,10 +144,6 @@ public class HttpManager {
                 .post(String.format(APIURL, USERS)+ "login")
                 .body(Map.of("email", email, "password", password)).asJson();
         token = response.getHeaders().getFirst("token");
-        if (token == null) {
-            return false;
-        }
-        return true;
-    }
-
+        return !token.isEmpty();
+	}
 }
