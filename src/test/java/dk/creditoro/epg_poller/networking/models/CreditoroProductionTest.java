@@ -12,7 +12,7 @@ public class CreditoroProductionTest {
 	CreditoroProduction creditoroProductions1;	
 	
 	public CreditoroProductionTest(){
-		creditoroProductions = new CreditoroProduction("test", "producerId", "channelId");
+		creditoroProductions = new CreditoroProduction("test", "producerId", "channelId", "description");
 		creditoroProductions1 = new CreditoroProduction("10-10-10", "test", "Producer", "channel");
 	}
 
@@ -48,5 +48,11 @@ public class CreditoroProductionTest {
 	void getChannel(){
 		assertEquals("channel", creditoroProductions1.channel, 
 				"could not get Object channel");
+	}
+
+	@Test
+	void getDescription(){
+		assertEquals("description", creditoroProductions.description,
+				"could not get the description");
 	}
 }
