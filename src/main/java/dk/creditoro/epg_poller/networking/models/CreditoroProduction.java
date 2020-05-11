@@ -23,11 +23,12 @@ public class CreditoroProduction {
 		this.description = description;
 	}
 
-	public CreditoroProduction(String identifier, String title, Object producer, Object channel){
+	public CreditoroProduction(String identifier, String title, Object producer, Object channel, String description){
 		this.identifier = identifier;
 		this.title = title;
 		this.producer = producer;
 		this.channel = channel;
+		this.description = description;
 	}
 
 	/**
