@@ -2,11 +2,9 @@ package dk.creditoro.epg_poller.networking;
 
 import dk.creditoro.epg_poller.networking.models.*;
 import dk.creditoro.epg_poller.networking.models.program.*;
-// import dk.creditoro.epg_poller.networking.models.program.TVTidProgram;
 import kong.unirest.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -24,6 +22,8 @@ public class HttpManager {
 	private static final String USERS = "/users/";
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	private static final String AUTHORIZATION = "Authorization";
+	private static final String HTTPERROR = "Http status: {0}";;
+	private static final String HTTPERRORW = "Http status: {0} and Waiting";;
     private String token;
 
     public HttpManager() {
@@ -55,9 +55,9 @@ public class HttpManager {
 		return responseAsTvTidProd.getBody();
     }
 
-	public TVTidProgram getTvTidProductionsWithDesc(TVTidProduction tvTidProduction, int ChannelId){
+	public TVTidProgram getTvTidProductionsWithDesc(TVTidProduction tvTidProduction, int channelId){
         LOGGER.info("Getting TVTid productions with description.");
-		var responseAsTvTidProg = Unirest.get(String.format(TVTIDPROGRAMS, WEBURLTV2, RESTVERSIONV1, ChannelId, tvTidProduction.getId())).
+		var responseAsTvTidProg = Unirest.get(String.format(TVTIDPROGRAMS, WEBURLTV2, RESTVERSIONV1, channelId, tvTidProduction.getId())).
 			asObject(TVTidPrograms.class);
 		LOGGER.log(Level.INFO, "Status code: {0}", responseAsTvTidProg.getStatus());	
 		return responseAsTvTidProg.getBody().getProgram();
@@ -76,24 +76,24 @@ public class HttpManager {
 
     public CreditoroProduction postProductions(CreditoroProduction production) {
         LOGGER.log(Level.INFO, "Posting Production: {0}, to Creditoro API.\n", production.getTitle());
-        LOGGER.log(Level.FINEST, "Posting Production: {0}, to Creditoro API.", production.toString());
-		int status = 200;
+        LOGGER.log(Level.FINEST, "Posting Production: {0}, to Creditoro API.", production);
 		while(true){
         var creditoroProduction = Unirest
                 .post(String.format(APIURL, PRODUCTION))
                 .body(production)
                 .header(AUTHORIZATION, token)
 				.asObject(CreditoroProduction.class);
-			status = creditoroProduction.getStatus();
-			if ( 200 <= status & status <= 299){
-				LOGGER.log(Level.INFO, "Http status: {0}", status);
+			int status = creditoroProduction.getStatus();
+			if ( 200 <= status &&  status <= 299){
+				LOGGER.log(Level.INFO, HTTPERROR, status);
 				return creditoroProduction.getBody();
 			} else if (status == 429){
 				try {
-					LOGGER.log(Level.INFO, "Http Status: {0} and waiting", status);
+					LOGGER.log(Level.INFO, HTTPERRORW, status);
 					Thread.sleep(5000);
 				} catch (InterruptedException e) {
-					LOGGER.info("Thread got woken UP?");
+					LOGGER.log(Level.WARNING, "Thread got woken UP?: {0}", e);
+					Thread.currentThread().interrupt();
 				}
 			} else {
 				LOGGER.log(Level.WARNING, "Returning null, Http Status {0}", status);
@@ -114,23 +114,23 @@ public class HttpManager {
 
 	public CreditoroChannel[] getChannels(String query) {
 		LOGGER.log(Level.INFO, "Getting the channel: {0} from creditoro API", query);
-		int status = 200;
 		while(true){
 			var creditoroChannels = Unirest
 				.get(String.format(APIURL, CHANNELS))
 				.queryString("q", query)
 				.header(AUTHORIZATION, token)
 				.asObject(CreditoroChannel[].class);
-			status = creditoroChannels.getStatus();
-			if ( 200 <= status & status <= 299){
-				LOGGER.log(Level.INFO, "Http status: {0}", status);
+			int status = creditoroChannels.getStatus();
+			if ( 200 <= status &&  status <= 299){
+				LOGGER.log(Level.INFO, HTTPERROR, status);
 				return creditoroChannels.getBody();
 			} else if (status == 429){
 				try {
-					LOGGER.log(Level.INFO, "Http Status: {0} and waiting", status);
+					LOGGER.log(Level.INFO, HTTPERRORW, status);
 					Thread.sleep(5000);
 				} catch (InterruptedException e) {
-					LOGGER.info("Thread got woken UP?");
+					LOGGER.log(Level.WARNING, "Thread got woken UP?: {0}", e);
+					Thread.currentThread().interrupt();
 				}
 			} else {
 				LOGGER.log(Level.WARNING, "Returning null, Http Status {0}", status);
