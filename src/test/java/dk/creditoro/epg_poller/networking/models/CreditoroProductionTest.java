@@ -57,4 +57,14 @@ public class CreditoroProductionTest {
 		assertEquals("thisIsADescription", creditoroProductions1.description,
 				"could not get the description");
 	}
+
+	@Test
+	void getToString(){
+		assertEquals(String.format("%n| %15s - %35s |%n| %15s - %35s |%n| %15s - %35s |%n| %15s - %35s |",
+				"Title", "test", 
+				"ProducerIdentifier", "producerId", 
+				"ChannelIdentifieres", "channelId",
+				"Description" ,"description"), creditoroProductions.toString(), 
+				"ToString Method changed, and I think this is the wrong way to test it?");
+	}
 }

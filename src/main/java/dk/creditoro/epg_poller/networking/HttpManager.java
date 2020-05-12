@@ -129,7 +129,7 @@ public class HttpManager {
 					LOGGER.log(Level.INFO, HTTPERRORW, status);
 					Thread.sleep(5000);
 				} catch (InterruptedException e) {
-					LOGGER.log(Level.INFO, "Thread got woken UP?: {0}", e);
+					LOGGER.log(Level.INFO, "Thread got woken UP?: {0}", e.toString());
 					Thread.currentThread().interrupt();
 				}
 			} else {
