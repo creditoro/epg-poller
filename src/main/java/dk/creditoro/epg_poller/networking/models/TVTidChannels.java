@@ -23,9 +23,9 @@ public class TVTidChannels {
 		return null;
 	}
 
-	public TVTidChannel getChannel(int id){
+	public TVTidChannel getChannel(int channelId){
 		for (TVTidChannel tvTidChannel : channels) {
-			if(tvTidChannel.getId() == id){
+			if(tvTidChannel.getId() == channelId){
 				return tvTidChannel;
 			}
 		}
