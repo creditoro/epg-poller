@@ -70,7 +70,7 @@ public class HttpManager {
                 .body(channel)
                 .header(AUTHORIZATION, token);
 		var jsonResponse = response.asObject(CreditoroChannel.class);
-		LOGGER.log(Level.INFO, "Http status: {0}" , jsonResponse.getStatus());
+		LOGGER.log(Level.INFO, HTTPERROR, jsonResponse.getStatus());
 		return jsonResponse.getBody();
     }
 
@@ -92,7 +92,7 @@ public class HttpManager {
 					LOGGER.log(Level.INFO, HTTPERRORW, status);
 					Thread.sleep(5000);
 				} catch (InterruptedException e) {
-					LOGGER.log(Level.WARNING, "Thread got woken UP?:", e.toString());
+					LOGGER.log(Level.WARNING, "Thread got woken UP?: {1}", e.toString());
 					Thread.currentThread().interrupt();
 				}
 			} else {
@@ -129,12 +129,12 @@ public class HttpManager {
 					LOGGER.log(Level.INFO, HTTPERRORW, status);
 					Thread.sleep(5000);
 				} catch (InterruptedException e) {
-					LOGGER.log(Level.WARNING, "Thread got woken UP?", e);
+					LOGGER.log(Level.WARNING, "Thread got woken UP? {1}", e.toString());
 					Thread.currentThread().interrupt();
 				}
 			} else {
 				LOGGER.log(Level.WARNING, "Returning null, Http Status {0}", status);
-				return null;
+				return new CreditoroChannel[0];
 			}
 		}
 	} 
