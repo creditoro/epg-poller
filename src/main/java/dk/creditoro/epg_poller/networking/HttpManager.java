@@ -22,9 +22,10 @@ public class HttpManager {
 	private static final String USERS = "/users/";
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	private static final String AUTHORIZATION = "Authorization";
-	private static final String HTTPERROR = "Http status: {0}";
+	private static final String HTTPSTATUS = "Http status: {0}";
 	private static final String HTTPERRORW = "Http status: {0} and Waiting";
     private String token;
+	private String identifier;
 
     public HttpManager() {
         try {
@@ -70,7 +71,7 @@ public class HttpManager {
                 .body(channel)
                 .header(AUTHORIZATION, token);
 		var jsonResponse = response.asObject(CreditoroChannel.class);
-		LOGGER.log(Level.INFO, HTTPERROR, jsonResponse.getStatus());
+		LOGGER.log(Level.INFO, HTTPSTATUS, jsonResponse.getStatus());
 		return jsonResponse.getBody();
     }
 
@@ -85,7 +86,7 @@ public class HttpManager {
 				.asObject(CreditoroProduction.class);
 			int status = creditoroProduction.getStatus();
 			if ( 200 <= status &&  status <= 299){
-				LOGGER.log(Level.INFO, HTTPERROR, status);
+				LOGGER.log(Level.INFO, HTTPSTATUS, status);
 				return creditoroProduction.getBody();
 			} else if (status == 429){
 				try {
@@ -96,7 +97,7 @@ public class HttpManager {
 					Thread.currentThread().interrupt();
 				}
 			} else {
-				LOGGER.log(Level.WARNING, "Returning null, Http Status {0}", status);
+				LOGGER.log(Level.WARNING, HTTPSTATUS, status);
 				return null;
 			}
 		} 
@@ -107,9 +108,20 @@ public class HttpManager {
         var response = Unirest
                 .delete(String.format(APIURL, CHANNELS)+ identifier)
                 .header(AUTHORIZATION, token);
-		var jsonResponse = response.asJson().getStatus();
-		LOGGER.log(Level.INFO, "The identifier maybe deleted, look at the respone: {0}", jsonResponse);
-		return jsonResponse;
+		var httpStatus = response.asJson().getStatus();
+		LOGGER.log(Level.INFO, HTTPSTATUS, httpStatus);
+		return httpStatus;
+    }
+
+
+    public int deleteProduction(String identifier) {
+		LOGGER.log(Level.INFO, "Deleting identifier: {0}", identifier);
+        var response = Unirest
+                .delete(String.format(APIURL, PRODUCTION)+ identifier)
+                .header(AUTHORIZATION, token);
+		var httpStatus = response.asJson().getStatus();
+		LOGGER.log(Level.INFO, HTTPSTATUS, httpStatus);
+		return httpStatus;
     }
 
 	public CreditoroChannel[] getChannels(String query) {
@@ -122,7 +134,7 @@ public class HttpManager {
 				.asObject(CreditoroChannel[].class);
 			int status = creditoroChannels.getStatus();
 			if ( 200 <= status &&  status <= 299){
-				LOGGER.log(Level.INFO, HTTPERROR, status);
+				LOGGER.log(Level.INFO, HTTPSTATUS, status);
 				return creditoroChannels.getBody();
 			} else if (status == 429){
 				try {
@@ -138,12 +150,42 @@ public class HttpManager {
 			}
 		}
 	} 
+	
 
-    public boolean login(String email, String password) {
-        var response = Unirest
-                .post(String.format(APIURL, USERS)+ "login")
-                .body(Map.of("email", email, "password", password)).asJson();
-        token = response.getHeaders().getFirst("token");
-        return !token.isEmpty();
+	public CreditoroProduction[] getProductions(String query) {
+		LOGGER.log(Level.INFO, "Getting the production: {0} from creditoro API", query);
+			var creditoroProductions = Unirest
+				.get(String.format(APIURL, PRODUCTION))
+				.queryString("q", query)
+				.header(AUTHORIZATION, token)
+				.asObject(CreditoroProduction[].class);
+				LOGGER.log(Level.INFO, HTTPSTATUS, creditoroProductions.getStatus());
+				return creditoroProductions.getBody();
+	} 
+
+
+	/**
+	 * @return true if the user godt logged ind.
+	 */
+	public boolean login(String email, String password) {
+		var response = Unirest
+			.post(String.format(APIURL, USERS)+ "login")
+			.body(Map.of("email", email, "password", password)).asJson();
+		token = response.getHeaders().getFirst("token");
+		if(!token.isEmpty()){
+			identifier = response.getBody().getObject().getString("identifier");
+		}
+		return !token.isEmpty();
+	}
+
+	/**
+	 * @return the identifier of the user logged ind 
+	 */
+	public String getIdentifier() {
+		if (identifier.isBlank()){
+			LOGGER.log(Level.INFO, "You are not loggedind");
+			return identifier;
+		} 
+		return identifier;
 	}
 }

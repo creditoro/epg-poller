@@ -180,8 +180,8 @@ public class TVTidProgram {
     }
 
     public List<Reference> getReferences() {
-        return references;
-    }
+		return references;
+	}
 
     public void setReferences(List<Reference> references) {
         this.references = references;

@@ -38,6 +38,13 @@ public class CreditoroProduction {
 		return title;
 	}
 
+	/**
+	* @return the identifier
+	*/
+	public String getIdentifier() {
+		return identifier;
+	}
+
 	@Override
 	public String toString(){
 		return String.format("%n| %15s - %35s |%n| %15s - %35s |%n| %15s - %35s |%n| %15s - %35s |",
