@@ -22,8 +22,8 @@ public class HttpManager {
 	private static final String USERS = "/users/";
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	private static final String AUTHORIZATION = "Authorization";
-	private static final String HTTPERROR = "Http status: {0}";;
-	private static final String HTTPERRORW = "Http status: {0} and Waiting";;
+	private static final String HTTPERROR = "Http status: {0}";
+	private static final String HTTPERRORW = "Http status: {0} and Waiting";
     private String token;
 
     public HttpManager() {
