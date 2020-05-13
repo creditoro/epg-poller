@@ -3,7 +3,7 @@ package dk.creditoro.epg_poller.core;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 /**
 * EPGPollerTest
