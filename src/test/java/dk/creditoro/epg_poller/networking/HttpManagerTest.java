@@ -8,6 +8,7 @@ import dk.creditoro.epg_poller.networking.models.CreditoroProduction;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HttpManagerTest {
@@ -49,6 +50,11 @@ class HttpManagerTest {
 		var httpRespone = httpManager.deleteChannel( getRespone[0].getIdentifier() );
 		assertEquals(204, httpRespone, "Checks if we can delte channel");
 	}
+	@Test
+	void getChannels(){
+		assertEquals(0, httpManager.getChannels("blblaldasldsaldslds").length,
+				"Because this is a unknow Channel this should be a length of 0");
+	}
 
 	@Test
 	void postAndDeleteProduction(){
@@ -64,6 +70,8 @@ class HttpManagerTest {
 		var production = new CreditoroProduction(title, 
 				producerId, channelId, "Get this description");
 		var productionFromAPI = httpManager.postProductions(production);
+		assertNull(httpManager.postProductions(production), 
+				"It should not be able to post the same production twice?");
 		assertNotNull(productionFromAPI, "Maybe it could not post to the api?");
 		assertEquals(title, productionFromAPI.getTitle());
 		assertEquals(204, httpManager.deleteProduction(productionFromAPI.getIdentifier()),
