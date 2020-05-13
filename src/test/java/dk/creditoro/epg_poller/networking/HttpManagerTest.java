@@ -86,8 +86,10 @@ class HttpManagerTest {
 
     @Test
     void failLogin() {
-        var loggedind = httpManager.login(USER, "1234");
+		var httpMangerLocal = new HttpManager();
+        var loggedind = httpMangerLocal.login(USER, "1234");
 		assertFalse(loggedind);
+		assertTrue(httpMangerLocal.getIdentifier().isBlank());
     }
 }
 

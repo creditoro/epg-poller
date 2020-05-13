@@ -182,8 +182,9 @@ public class HttpManager {
 	 * @return the identifier of the user logged ind 
 	 */
 	public String getIdentifier() {
-		if (identifier.isBlank()){
+		if (identifier == null){
 			LOGGER.log(Level.INFO, "You are not loggedind");
+			return null;
 		} 
 		return identifier;
 	}
