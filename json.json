@@ -1,0 +1,57 @@
+{
+  "program": {
+    "id": "21886014",
+    "url": "https://tv.tv2.dk/program/156/21886014",
+    "title": "Boksning: Patrick Nielsen-José Pinzon",
+    "categories": [
+      "Sport",
+      "Programmer"
+    ],
+    "desc": "Intercontinental-mesteren i mellemvægt i WBA og WBO, Patrick Nielsen, mødte den mexicanske udfordrer José Pinzon på hjemmebane i MusikTeatret i Albertslund den 16. november 2013. Se eller gense kampen.",
+    "orgTitle": "Boksning: Arkiv div.",
+    "prodYear": 2015,
+    "prodCountry": "",
+    "teaser": "",
+    "imgs": {
+      "images": [
+        {
+          "url": "https://tv2i.dk/users/tvtid/images/55b1eb17-3143-4223-b80c-f059b33e2ed9",
+          "scaleUrl": "https://tv2i.dk/users/tvtid/images/55b1eb17-3143-4223-b80c-f059b33e2ed9",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    "locations": {
+      "schedules": [
+        {
+          "channelId": "156",
+          "title": "Boksning: Patrick Nielsen-José Pinzon",
+          "categories": [
+            "Sport",
+            "Programmer"
+          ],
+          "stop": 1589063400,
+          "start": 1589060700,
+          "rerun": false,
+          "premiere": false,
+          "live": false
+        }
+      ],
+      "vods": []
+    },
+    "ttvTexted": false,
+    "references": [
+      {
+        "authority": "ritzau",
+        "type": "extId",
+        "key": "21886014"
+      },
+      {
+        "authority": "ritzau",
+        "type": "productcode",
+        "key": "21886014"
+      }
+    ]
+  }
+}
