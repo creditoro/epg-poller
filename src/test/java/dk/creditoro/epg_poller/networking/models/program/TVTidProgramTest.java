@@ -128,6 +128,8 @@ public class TVTidProgramTest {
 		assertNotNull(tvTidProgram.getLocations().getSchedules().get(0).getCategories() );
 		assertEquals("Action", tvTidProgram.getLocations().getSchedules().get(0).getCategories().get(0) );
 		assertEquals("Romance", tvTidProgram.getLocations().getSchedules().get(0).getCategories().get(1) );
+		assertTrue(tvTidProgram.getLocations().getVods().add(new Object()) );
+		assertNotNull(tvTidProgram.getLocations().getVods().get(0));
 	}
 
 	@Test
