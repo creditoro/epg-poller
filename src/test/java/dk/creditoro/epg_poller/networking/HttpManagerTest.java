@@ -55,7 +55,9 @@ class HttpManagerTest {
 		var title = "this is a awesome title";
 		httpManager.login(USER, PASSWORD);
 		var productionD = httpManager.getProductions(title);
-		httpManager.deleteProduction(productionD[0].getIdentifier());
+		if(productionD.length != 0){
+			httpManager.deleteProduction(productionD[0].getIdentifier());
+		}
 		var channel = httpManager.getChannels("TV2");
 		var producerId = httpManager.getIdentifier();
 		var channelId = channel[0].getIdentifier();
