@@ -89,7 +89,7 @@ class HttpManagerTest {
 		var httpMangerLocal = new HttpManager();
         var loggedind = httpMangerLocal.login(USER, "1234");
 		assertFalse(loggedind);
-		assertTrue(httpMangerLocal.getIdentifier().isBlank());
+		assertNull(httpMangerLocal.getIdentifier());
     }
 }
 

@@ -183,8 +183,7 @@ public class HttpManager {
 	 */
 	public String getIdentifier() {
 		if (identifier == null){
-			LOGGER.log(Level.INFO, "You are not loggedind");
-			return null;
+			LOGGER.log(Level.WARNING, "You are **NOT** logged in");
 		} 
 		return identifier;
 	}
