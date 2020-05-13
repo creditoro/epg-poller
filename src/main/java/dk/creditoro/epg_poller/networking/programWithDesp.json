@@ -1,0 +1,88 @@
+{
+  "program": {
+    "id": "JPVSYIRrIJ0x",
+    "url": "https://tv.tv2.dk/program/31/JPVSYIRrIJ0x",
+    "title": "Hailey Dean Mystery: 2+2 = Mord",
+    "categories": [
+      "Film",
+      "Film",
+      "Drama & Fiktion"
+    ],
+    "desc": "Hailey deltager ved sin nieces skoleforestilling og opdager, at den elskede musiklærer er forsvundet. Der går ikke længe, før hun finder flere opsigtsvækkende hemmeligheder blandt medarbejderne samt en forbindelse mellem den forsvundne lærer og skolens renoveringsfond.",
+    "orgTitle": "Hailey Dean Mystery: 2+2 = Murder",
+    "prodYear": 2018,
+    "prodCountry": "USA",
+    "teaser": "",
+    "audio": "Stereo",
+    "video": {
+      "aspect": "HD"
+    },
+    "imgs": {
+      "images": [
+        {
+          "url": "https://tv2i.dk/users/tvtid/images/3ea78de8-7757-4ad7-8df1-ee2692502853",
+          "scaleUrl": "https://tv2i.dk/users/tvtid/images/3ea78de8-7757-4ad7-8df1-ee2692502853",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "url": "https://tv2i.dk/users/tvtid/images/ba81a1e7-abb4-4cf7-ace4-1db0c308367b",
+          "scaleUrl": "https://tv2i.dk/users/tvtid/images/ba81a1e7-abb4-4cf7-ace4-1db0c308367b",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "url": "https://tv2i.dk/users/tvtid/images/307da19c-d165-499d-8a47-42e8d6b1468c",
+          "scaleUrl": "https://tv2i.dk/users/tvtid/images/307da19c-d165-499d-8a47-42e8d6b1468c",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "url": "https://tv2i.dk/users/tvtid/images/7f4ca0e7-8f70-41f7-838f-0a0fb8df4bc7",
+          "scaleUrl": "https://tv2i.dk/users/tvtid/images/7f4ca0e7-8f70-41f7-838f-0a0fb8df4bc7",
+          "width": 0,
+          "height": 0
+        }
+      ]
+    },
+    "credits": {
+      "director": [
+        {
+          "name": "Michael Robison"
+        }
+      ]
+    },
+    "locations": {
+      "schedules": [
+        {
+          "channelId": "31",
+          "title": "Hailey Dean Mystery: 2+2 = Mord",
+          "categories": [
+            "Film",
+            "Film",
+            "Drama & Fiktion"
+          ],
+          "stop": 1589031900,
+          "start": 1589026500,
+          "rerun": true,
+          "premiere": false,
+          "live": false
+        }
+      ],
+      "vods": []
+    },
+    "ttvTexted": false,
+    "references": [
+      {
+        "authority": "whatson",
+        "type": "extId",
+        "key": "21128327783527"
+      },
+      {
+        "authority": "whatson",
+        "type": "productcode",
+        "key": "21806140"
+      }
+    ]
+  }
+}

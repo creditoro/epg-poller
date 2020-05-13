@@ -12,8 +12,8 @@ public class CreditoroProductionTest {
 	CreditoroProduction creditoroProductions1;	
 	
 	public CreditoroProductionTest(){
-		creditoroProductions = new CreditoroProduction("test", "producerId", "channelId");
-		creditoroProductions1 = new CreditoroProduction("10-10-10", "test", "Producer", "channel");
+		creditoroProductions = new CreditoroProduction("test", "producerId", "channelId", "description");
+		creditoroProductions1 = new CreditoroProduction("10-10-10", "test", "Producer", "channel", "thisIsADescription");
 	}
 
 	@Test
@@ -48,5 +48,23 @@ public class CreditoroProductionTest {
 	void getChannel(){
 		assertEquals("channel", creditoroProductions1.channel, 
 				"could not get Object channel");
+	}
+
+	@Test
+	void getDescription(){
+		assertEquals("description", creditoroProductions.description,
+				"could not get the description");
+		assertEquals("thisIsADescription", creditoroProductions1.description,
+				"could not get the description");
+	}
+
+	@Test
+	void getToString(){
+		assertEquals(String.format("%n| %15s - %35s |%n| %15s - %35s |%n| %15s - %35s |%n| %15s - %35s |",
+				"Title", "test", 
+				"ProducerIdentifier", "producerId", 
+				"ChannelIdentifieres", "channelId",
+				"Description" ,"description"), creditoroProductions.toString(), 
+				"ToString Method changed, and I think this is the wrong way to test it?");
 	}
 }

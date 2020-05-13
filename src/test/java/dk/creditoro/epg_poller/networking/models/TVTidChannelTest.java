@@ -23,4 +23,10 @@ public class TVTidChannelTest {
 	void getLogo(){
 		assertEquals( "https://epg-images.tv2.dk/channellogos/logo/3.png" , tvTidChannel.getLogo(), "Check the channel logo get method");
 	}
+
+	@Test
+	void getId(){
+		assertEquals(3, tvTidChannel.getId(), "Check the channel id get method");
+	}
+
 }
