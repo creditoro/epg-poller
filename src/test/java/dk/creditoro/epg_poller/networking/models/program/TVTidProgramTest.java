@@ -22,6 +22,8 @@ public class TVTidProgramTest {
 		assertDoesNotThrow(() -> tvTidProgram.setOrgTitle("tv2"));
 		assertDoesNotThrow(() -> tvTidProgram.setId("101010"));
 		assertDoesNotThrow(() -> tvTidProgram.setImgs(new Imgs()));
+		assertDoesNotThrow(() -> tvTidProgram.getImgs().setImages(new ArrayList<Image>()) );
+		assertDoesNotThrow(() -> tvTidProgram.getImgs().getImages().add(new Image()) );
 		assertDoesNotThrow(() -> tvTidProgram.setUrl("www.g.dk"));
 		assertDoesNotThrow(() -> tvTidProgram.setDesc("description"));
 		assertDoesNotThrow(() -> tvTidProgram.setSeries(new Series()));
@@ -31,6 +33,8 @@ public class TVTidProgramTest {
 		assertDoesNotThrow(() -> tvTidProgram.setChannelId("101010"));
 		assertDoesNotThrow(() -> tvTidProgram.setTtvTexted(true));
 		assertDoesNotThrow(() -> tvTidProgram.setLocations(new Locations()));
+		assertDoesNotThrow(() -> tvTidProgram.getLocations().setSchedules(new ArrayList<Schedule>()) );
+		assertDoesNotThrow(() -> tvTidProgram.getLocations().setVods(new ArrayList<Object>()) );
 		assertDoesNotThrow(() -> tvTidProgram.setProdCountry("dk"));
 		assertDoesNotThrow(() -> tvTidProgram.setCategories(new ArrayList<String>()));
 		assertDoesNotThrow(() -> tvTidProgram.setReferences(new ArrayList<Reference>()));
@@ -83,5 +87,56 @@ public class TVTidProgramTest {
 				"Look at references.java");
 		assertEquals("thisAuthority", tvTidProgram.getReferences().get(0).getAuthority(),
 				"Look at references.java");
+	}
+
+	@Test
+	void getSetImages(){
+		assertDoesNotThrow(() -> tvTidProgram.getImgs().getImages().get(0).setUrl("www.k.dk"));
+		assertDoesNotThrow(() -> tvTidProgram.getImgs().getImages().get(0).setWidth(1000));
+		assertDoesNotThrow(() -> tvTidProgram.getImgs().getImages().get(0).setHeight(1500));
+		assertDoesNotThrow(() -> tvTidProgram.getImgs().getImages().get(0).setScaleUrl("www.k.scale.dk"));
+		assertEquals("www.k.dk", tvTidProgram.getImgs().getImages().get(0).getUrl());
+		assertEquals(1000, tvTidProgram.getImgs().getImages().get(0).getWidth());
+		assertEquals(1500, tvTidProgram.getImgs().getImages().get(0).getHeight());
+		assertEquals("www.k.scale.dk", tvTidProgram.getImgs().getImages().get(0).getScaleUrl());
+		assertEquals(1, tvTidProgram.getImgs().getImages().size());
+	}
+
+	@Test
+	void getSetLocations(){
+		assertNotNull(tvTidProgram.getLocations().getSchedules());
+		tvTidProgram.getLocations().getSchedules().add(new Schedule());
+		tvTidProgram.getLocations().getSchedules().get(0).setStop(10);
+		tvTidProgram.getLocations().getSchedules().get(0).setStart(5);
+		tvTidProgram.getLocations().getSchedules().get(0).setLive(true);
+		tvTidProgram.getLocations().getSchedules().get(0).setRerun(false);
+		tvTidProgram.getLocations().getSchedules().get(0).setPremiere(true);
+		tvTidProgram.getLocations().getSchedules().get(0).setTitle("title");
+		tvTidProgram.getLocations().getSchedules().get(0).setChannelId("10-10-10");
+		tvTidProgram.getLocations().getSchedules().get(0).setCategories(new ArrayList<String>());
+		tvTidProgram.getLocations().getSchedules().get(0).getCategories().add("Action");
+		tvTidProgram.getLocations().getSchedules().get(0).getCategories().add("Romance");
+
+		assertEquals(1, tvTidProgram.getLocations().getSchedules().size() );
+		assertEquals(5, tvTidProgram.getLocations().getSchedules().get(0).getStart() );
+		assertEquals(10, tvTidProgram.getLocations().getSchedules().get(0).getStop() );
+		assertEquals(true, tvTidProgram.getLocations().getSchedules().get(0).isLive() );
+		assertEquals(false, tvTidProgram.getLocations().getSchedules().get(0).isRerun() );
+		assertEquals(true, tvTidProgram.getLocations().getSchedules().get(0).isPremiere() );
+		assertEquals("title", tvTidProgram.getLocations().getSchedules().get(0).getTitle() );
+		assertEquals("10-10-10", tvTidProgram.getLocations().getSchedules().get(0).getChannelId() );
+		assertNotNull(tvTidProgram.getLocations().getSchedules().get(0).getCategories() );
+		assertEquals("Action", tvTidProgram.getLocations().getSchedules().get(0).getCategories().get(0) );
+		assertEquals("Romance", tvTidProgram.getLocations().getSchedules().get(0).getCategories().get(1) );
+	}
+
+	@Test
+	void getSetSeries(){
+		assertEquals(0, tvTidProgram.getSeries().getSeason());
+		assertEquals(0, tvTidProgram.getSeries().getEpisode());
+		assertDoesNotThrow(() -> tvTidProgram.getSeries().setSeason(10) );
+		assertDoesNotThrow(() -> tvTidProgram.getSeries().setEpisode(5) );
+		assertEquals(10, tvTidProgram.getSeries().getSeason());
+		assertEquals(5, tvTidProgram.getSeries().getEpisode());
 	}
 }
