@@ -184,7 +184,6 @@ public class HttpManager {
 	public String getIdentifier() {
 		if (identifier.isBlank()){
 			LOGGER.log(Level.INFO, "You are not loggedind");
-			return identifier;
 		} 
 		return identifier;
 	}
