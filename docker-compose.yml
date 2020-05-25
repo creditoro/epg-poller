@@ -1,0 +1,23 @@
+version: "3.7"
+
+services: 
+  creditoro_epg_poller:
+    container_name: creditoro_epg_poller
+    build: 
+      context: .
+      args:
+        API_URL: ${API_URL}
+        API_WEBURLTV2: ${API_WEBURLTV2}
+        API_USER: ${API_USER}
+        API_PASSWORD: ${API_PASSWORD}
+      dockerfile: docker/Dockerfile
+    env_file:
+      - docker/epg.env
+    command: 'java -jar target/epg_poller-0.0.1.jar'
+    networks:
+      - web
+
+networks:
+  web:
+    external:
+      name: web

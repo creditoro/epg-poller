@@ -13,10 +13,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HttpManagerTest {
     private HttpManager httpManager;
-	private static final String USER = "string@string.dk";
-	private static final String PASSWORD = "string";
+	private static String USER = "string@string.dk";
+	private static String PASSWORD = "string";
 
     public HttpManagerTest() {
+        USER = LoadConfig.getLoadconfig().getUser();
+        PASSWORD = LoadConfig.getLoadconfig().getPassword();
         httpManager = new HttpManager();
     }
 
@@ -41,7 +43,7 @@ class HttpManagerTest {
 		}
 		// Post the first channel
 		var responeChannel = httpManager.postChannel(channel);
-		assertTrue(channel.getName().equalsIgnoreCase(responeChannel.getName()), "Makes sure it it gets the same channels as it posted");
+		assertEquals(channel.getName(), responeChannel.getName(), "Makes sure it it gets the same channels as it posted");
 		// post the samme channel again
 		var dublicatedResponeChannel = httpManager.postChannel(channel);
 		assertFalse(channel.equals(dublicatedResponeChannel), "Makes sure it can't post dublicate");
