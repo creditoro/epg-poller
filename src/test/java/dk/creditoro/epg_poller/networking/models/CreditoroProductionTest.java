@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 /**
 * CreditoroProductionTest
 */
-public class CreditoroProductionTest {
+class CreditoroProductionTest {
 	CreditoroProduction creditoroProductions;	
 	CreditoroProduction creditoroProductions1;	
 	

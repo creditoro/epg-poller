@@ -1,5 +1,6 @@
 package dk.creditoro.epg_poller.networking;
 
+import dk.creditoro.epg_poller.core.LoadConfig;
 import dk.creditoro.epg_poller.networking.models.*;
 import dk.creditoro.epg_poller.networking.models.program.*;
 import kong.unirest.*;

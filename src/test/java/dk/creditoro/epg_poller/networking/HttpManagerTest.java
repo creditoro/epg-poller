@@ -2,6 +2,7 @@ package dk.creditoro.epg_poller.networking;
 
 import org.junit.jupiter.api.Test;
 
+import dk.creditoro.epg_poller.core.LoadConfig;
 import dk.creditoro.epg_poller.networking.models.CreditoroChannel;
 import dk.creditoro.epg_poller.networking.models.CreditoroProduction;
 
@@ -13,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HttpManagerTest {
     private HttpManager httpManager;
-	private static String USER = "string@string.dk";
-	private static String PASSWORD = "string";
+	private static String USER = LoadConfig.getLoadconfig().getUser();
+	private static String PASSWORD = LoadConfig.getLoadconfig().getPassword();
 
     public HttpManagerTest() {
         USER = LoadConfig.getLoadconfig().getUser();
