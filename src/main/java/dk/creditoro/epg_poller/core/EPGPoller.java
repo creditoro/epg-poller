@@ -1,11 +1,11 @@
 package dk.creditoro.epg_poller.core;
 
 import dk.creditoro.epg_poller.networking.HttpManager;
-import dk.creditoro.epg_poller.networking.models.CreditoroChannel;
-import dk.creditoro.epg_poller.networking.models.CreditoroProduction;
-import dk.creditoro.epg_poller.networking.models.TVTidChannel;
-import dk.creditoro.epg_poller.networking.models.TVTidProductions;
-import dk.creditoro.epg_poller.networking.models.program.TVTidProgram;
+import dk.creditoro.epg_poller.models.CreditoroChannel;
+import dk.creditoro.epg_poller.models.CreditoroProduction;
+import dk.creditoro.epg_poller.models.TVTidChannel;
+import dk.creditoro.epg_poller.models.TVTidProductions;
+import dk.creditoro.epg_poller.models.program.TVTidProgram;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

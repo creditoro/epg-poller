@@ -1,5 +1,5 @@
 
-package dk.creditoro.epg_poller.networking.models.program;
+package dk.creditoro.epg_poller.models.program;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

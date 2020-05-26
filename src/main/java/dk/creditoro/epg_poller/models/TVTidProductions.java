@@ -1,4 +1,4 @@
-package dk.creditoro.epg_poller.networking.models;
+package dk.creditoro.epg_poller.models;
 
 import com.google.gson.annotations.SerializedName;
 

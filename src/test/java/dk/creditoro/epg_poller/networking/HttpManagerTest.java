@@ -3,8 +3,8 @@ package dk.creditoro.epg_poller.networking;
 import org.junit.jupiter.api.Test;
 
 import dk.creditoro.epg_poller.core.LoadConfig;
-import dk.creditoro.epg_poller.networking.models.CreditoroChannel;
-import dk.creditoro.epg_poller.networking.models.CreditoroProduction;
+import dk.creditoro.epg_poller.models.CreditoroChannel;
+import dk.creditoro.epg_poller.models.CreditoroProduction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
