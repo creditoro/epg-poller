@@ -3,30 +3,30 @@ package dk.creditoro.epg_poller.models;
 import com.google.gson.annotations.SerializedName;
 
 /**
-* TVTidProductions
-*/
+ * TVTidProductions
+ */
 public class TVTidProductions {
-	private int id;
+    private int id;
     @SerializedName("programs")
-	private TVTidProduction[] productions;
+    private TVTidProduction[] productions;
 
     public TVTidProductions(int id, TVTidProduction[] productions) {
         this.id = id;
-		this.productions = productions;
+        this.productions = productions;
     }
 
-	/**
-	* @return the id
-	*/
-	public int getId() {
-		return id;
-	}
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
 
-	/**
-	* @return the productions
-	*/
-	public TVTidProduction[] getProductions() {
-		return productions;
-	}
-	
+    /**
+     * @return the productions
+     */
+    public TVTidProduction[] getProductions() {
+        return productions;
+    }
+
 }

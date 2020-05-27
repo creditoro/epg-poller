@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 /**
 * TVTidChannelsTest
 */
-public class TVTidChannelsTest {
+class TVTidChannelsTest {
 	private TVTidChannels tvTidChannels;
 	private TVTidChannel[] channelArray;
 

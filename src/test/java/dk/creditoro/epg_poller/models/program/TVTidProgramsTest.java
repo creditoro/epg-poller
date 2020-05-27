@@ -1,16 +1,13 @@
 package dk.creditoro.epg_poller.models.program;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 /**
 * TVTidProgramsTest
 */
-public class TVTidProgramsTest {
+class TVTidProgramsTest {
 	TVTidPrograms tvTidPrograms;
 	TVTidPrograms tvTidProgramsWithNull;
 
