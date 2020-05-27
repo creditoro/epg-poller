@@ -1,4 +1,4 @@
-package dk.creditoro.epg_poller.networking.models;
+package dk.creditoro.epg_poller.models;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 /**
 * TVTidProductionsTest
 */
-public class TVTidProductionsTest {
+class TVTidProductionsTest {
 		TVTidProductions tvTidProductions;
 	
 	public TVTidProductionsTest(){

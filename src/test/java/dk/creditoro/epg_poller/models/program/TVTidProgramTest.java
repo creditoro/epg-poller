@@ -1,4 +1,4 @@
-package dk.creditoro.epg_poller.networking.models.program;
+package dk.creditoro.epg_poller.models.program;
 
 import static org.junit.jupiter.api.Assertions.*;
 

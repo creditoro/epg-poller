@@ -1,5 +1,5 @@
 
-package dk.creditoro.epg_poller.networking.models.program;
+package dk.creditoro.epg_poller.models.program;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

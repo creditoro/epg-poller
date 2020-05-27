@@ -1,11 +1,11 @@
 package dk.creditoro.epg_poller.core;
 
 import dk.creditoro.epg_poller.networking.HttpManager;
-import dk.creditoro.epg_poller.networking.models.CreditoroChannel;
-import dk.creditoro.epg_poller.networking.models.CreditoroProduction;
-import dk.creditoro.epg_poller.networking.models.TVTidChannel;
-import dk.creditoro.epg_poller.networking.models.TVTidProductions;
-import dk.creditoro.epg_poller.networking.models.program.TVTidProgram;
+import dk.creditoro.epg_poller.models.CreditoroChannel;
+import dk.creditoro.epg_poller.models.CreditoroProduction;
+import dk.creditoro.epg_poller.models.TVTidChannel;
+import dk.creditoro.epg_poller.models.TVTidProductions;
+import dk.creditoro.epg_poller.models.program.TVTidProgram;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,6 +21,8 @@ import java.util.logging.Logger;
 public class EPGPoller {
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private final HttpManager httpManager;
+    private String user = LoadConfig.getLoadconfig().getUser();
+    private String password = LoadConfig.getLoadconfig().getPassword();
 
     /**
      * Instantiates a new Epg poller.
@@ -33,7 +35,7 @@ public class EPGPoller {
      * Start the EPG Poller.
      */
     public void start() {
-        httpManager.login("string@string.dk", "string");
+        httpManager.login(user, password);
         var tvTidChannels = extract();
         var creditoroChannels = transform(tvTidChannels);
         load(creditoroChannels);
@@ -41,7 +43,7 @@ public class EPGPoller {
     }
 
 	public void startPostProductions(){
-        httpManager.login("string@string.dk", "string");
+        httpManager.login(user, password);
         var tvTidChannels = extract();
 		var productionsWithDesc = extractProductions(tvTidChannels);
 		var creditoroProductions = transform(productionsWithDesc, "6ed67a28-f288-492b-8947-d9d0e9539608");
