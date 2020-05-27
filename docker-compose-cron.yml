@@ -1,0 +1,13 @@
+version: '3'
+services:
+  docker-cron:
+    image: pschatzmann/docker-cron
+    container_name: docker-cron
+
+    labels:
+      - job.scenario=Local
+      - job.condition=container.matches("creditoro_epg_poller")
+      - job.run-epgpoller.command.1=docker compose up
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: on-failure

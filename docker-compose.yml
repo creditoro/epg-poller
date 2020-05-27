@@ -13,11 +13,7 @@ services:
       dockerfile: docker/Dockerfile
     env_file:
       - .env
-    command: 'java -jar target/epg_poller-0.0.1.jar'
-    networks:
-      - web
-
-networks:
-  web:
-    external:
-      name: web
+    labels:
+        # Run the EPG poller every 2 hours.
+        - "job.epgpoll.schedule=* 2 * *"
+        - "job.epgpoll.command="

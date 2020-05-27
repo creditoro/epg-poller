@@ -17,8 +17,6 @@ class HttpManagerTest {
     private static String PASSWORD = LoadConfig.getLoadconfig().getPassword();
 
     public HttpManagerTest() {
-        USER = LoadConfig.getLoadconfig().getUser();
-        PASSWORD = LoadConfig.getLoadconfig().getPassword();
         httpManager = new HttpManager();
     }
 
