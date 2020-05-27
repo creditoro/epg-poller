@@ -46,7 +46,7 @@ public class EPGPoller {
         httpManager.login(user, password);
         var tvTidChannels = extract();
 		var productionsWithDesc = extractProductions(tvTidChannels);
-		var creditoroProductions = transform(productionsWithDesc, "6ed67a28-f288-492b-8947-d9d0e9539608");
+		var creditoroProductions = transform(productionsWithDesc, httpManager.getIdentifier());
 		loadProductions(creditoroProductions);
         LOGGER.info(":-)");
 	}
