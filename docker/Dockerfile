@@ -12,4 +12,4 @@ COPY . /usr/src/app/
 # Create the jar file
 RUN API_URL=${API_URL} API_WEBURLTV2=${API_WEBURLTV2} API_USER=${API_USER} API_PASSWORD=${API_PASSWORD} mvn clean install
 
-ENTRYPOINT ["/usr/bin/java", "-jar target/epg_poller-0.0.1.jar"]
+ENTRYPOINT ["java", "-jar target/epg_poller-0.0.1.jar"]
