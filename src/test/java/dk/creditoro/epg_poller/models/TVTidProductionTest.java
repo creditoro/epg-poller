@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 /**
 * TVTidProductionTest
 */
-public class TVTidProductionTest {
+class TVTidProductionTest {
 	private TVTidProduction tvTidProduction;
 
 	public TVTidProductionTest(){

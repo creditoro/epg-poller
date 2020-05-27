@@ -6,11 +6,7 @@ import dk.creditoro.epg_poller.core.LoadConfig;
 import dk.creditoro.epg_poller.models.CreditoroChannel;
 import dk.creditoro.epg_poller.models.CreditoroProduction;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class HttpManagerTest {
     private HttpManager httpManager;
@@ -47,7 +43,7 @@ class HttpManagerTest {
 		assertEquals(channel.getName(), responeChannel.getName(), "Makes sure it it gets the same channels as it posted");
 		// post the samme channel again
 		var dublicatedResponeChannel = httpManager.postChannel(channel);
-		assertFalse(channel.equals(dublicatedResponeChannel), "Makes sure it can't post dublicate");
+		assertNotEquals(channel, dublicatedResponeChannel, "Makes sure it can't post dublicate");
 		// Delte the channel 
 		getRespone = httpManager.getChannels(channel.getName());
 		var httpRespone = httpManager.deleteChannel( getRespone[0].getIdentifier() );

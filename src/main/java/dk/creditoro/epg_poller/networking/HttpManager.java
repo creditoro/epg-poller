@@ -23,14 +23,12 @@ public class HttpManager {
     private static final String AUTHORIZATION = "Authorization";
     private static final String HTTPSTATUS = "Http status: {0}";
     private static final String HTTPERRORW = "Http status: {0} and Waiting";
-    private static String APIURL;
-    private static String WEBURLTV2;
+    private static String apiurl = LoadConfig.getLoadconfig().getAPIURL();
+    private static String webUrlTV2 = LoadConfig.getLoadconfig().getWeburltv2();
     private String token;
     private String identifier;
 
     public HttpManager() {
-        APIURL = LoadConfig.getLoadconfig().getAPIURL();
-        WEBURLTV2 = LoadConfig.getLoadconfig().getWeburltv2();
         try {
             Unirest.config()
                 .setDefaultHeader("Accept", "application/json")
@@ -45,7 +43,7 @@ public class HttpManager {
     public TVTidChannels getTvTidChannels() {
         LOGGER.info("Getting TVTid channels.");
         var response = Unirest
-            .get(String.format(TVTIDCHANNELS, WEBURLTV2, RESTVERSIONV1));
+            .get(String.format(TVTIDCHANNELS, webUrlTV2, RESTVERSIONV1));
         var obj = response.asObject(TVTidChannels.class);
         return obj.getBody();
     }
@@ -53,7 +51,7 @@ public class HttpManager {
     public TVTidProductions[] getTvTidProductions(List<Integer> channelIdList, LocalDate date) {
         LOGGER.info("Getting TVTid productions.");
         var responseAsTvTidProd = Unirest
-            .get(String.format(TVTIDPRODUCTIONS, WEBURLTV2, RESTVERSIONV1, date))
+            .get(String.format(TVTIDPRODUCTIONS, webUrlTV2, RESTVERSIONV1, date))
             .queryString("ch", channelIdList).asObject(TVTidProductions[].class);
         LOGGER.log(Level.INFO, "Status code: {0}", responseAsTvTidProd.getStatus());
         return responseAsTvTidProd.getBody();
@@ -61,7 +59,7 @@ public class HttpManager {
 
     public TVTidProgram getTvTidProductionsWithDesc(TVTidProduction tvTidProduction, int channelId){
         LOGGER.info("Getting TVTid productions with description.");
-        var responseAsTvTidProg = Unirest.get(String.format(TVTIDPROGRAMS, WEBURLTV2, RESTVERSIONV1, channelId, tvTidProduction.getId())).
+        var responseAsTvTidProg = Unirest.get(String.format(TVTIDPROGRAMS, webUrlTV2, RESTVERSIONV1, channelId, tvTidProduction.getId())).
             asObject(TVTidPrograms.class);
         LOGGER.log(Level.INFO, "Status code: {0}", responseAsTvTidProg.getStatus());	
         return responseAsTvTidProg.getBody().getProgram();
@@ -70,7 +68,7 @@ public class HttpManager {
     public CreditoroChannel postChannel(CreditoroChannel channel) {
         LOGGER.info("Posting to Creditoro API.");
         var response = Unirest
-            .post(String.format(APIURL, CHANNELS))
+            .post(String.format(apiurl, CHANNELS))
             .body(channel)
             .header(AUTHORIZATION, token);
         var jsonResponse = response.asObject(CreditoroChannel.class);
@@ -83,7 +81,7 @@ public class HttpManager {
         LOGGER.log(Level.FINEST, "Posting Production: {0}, to Creditoro API.", production);
         while(true){
             var creditoroProduction = Unirest
-                .post(String.format(APIURL, PRODUCTION))
+                .post(String.format(apiurl, PRODUCTION))
                 .body(production)
                 .header(AUTHORIZATION, token)
                 .asObject(CreditoroProduction.class);
@@ -109,7 +107,7 @@ public class HttpManager {
     public int deleteChannel(String identifier) {
         LOGGER.log(Level.INFO, "Deleting identifier: {0}", identifier);
         var response = Unirest
-            .delete(String.format(APIURL, CHANNELS)+ identifier)
+            .delete(String.format(apiurl, CHANNELS)+ identifier)
             .header(AUTHORIZATION, token);
         var httpStatus = response.asJson().getStatus();
         LOGGER.log(Level.INFO, HTTPSTATUS, httpStatus);
@@ -120,7 +118,7 @@ public class HttpManager {
     public int deleteProduction(String identifier) {
         LOGGER.log(Level.INFO, "Deleting identifier: {0}", identifier);
         var response = Unirest
-            .delete(String.format(APIURL, PRODUCTION)+ identifier)
+            .delete(String.format(apiurl, PRODUCTION)+ identifier)
             .header(AUTHORIZATION, token);
         var httpStatus = response.asJson().getStatus();
         LOGGER.log(Level.INFO, HTTPSTATUS, httpStatus);
@@ -131,7 +129,7 @@ public class HttpManager {
         LOGGER.log(Level.INFO, "Getting the channel: {0} from creditoro API", query);
         while(true){
             var creditoroChannels = Unirest
-                .get(String.format(APIURL, CHANNELS))
+                .get(String.format(apiurl, CHANNELS))
                 .queryString("q", query)
                 .header(AUTHORIZATION, token)
                 .asObject(CreditoroChannel[].class);
@@ -158,7 +156,7 @@ public class HttpManager {
     public CreditoroProduction[] getProductions(String query) {
         LOGGER.log(Level.INFO, "Getting the production: {0} from creditoro API", query);
         var creditoroProductions = Unirest
-            .get(String.format(APIURL, PRODUCTION))
+            .get(String.format(apiurl, PRODUCTION))
             .queryString("q", query)
             .header(AUTHORIZATION, token)
             .asObject(CreditoroProduction[].class);
@@ -172,10 +170,9 @@ public class HttpManager {
      */
     public boolean login(String email, String password) {
         var response = Unirest
-            .post(String.format(APIURL, USERS)+ "login")
+            .post(String.format(apiurl, USERS)+ "login")
             .body(Map.of("email", email, "password", password)).asJson();
         token = response.getHeaders().getFirst("token");
-        System.out.println("TOKEN: " + token);
         if(!token.isEmpty()){
             identifier = response.getBody().getObject().getString("identifier");
         }

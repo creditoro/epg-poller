@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 /**
 * TVTidChannel
 */
-public class TVTidChannelTest {
+class TVTidChannelTest {
 	private TVTidChannel tvTidChannel;
 	public TVTidChannelTest(){
 		tvTidChannel = new TVTidChannel( 3, "TV 2 DANMARK", "https://epg-images.tv2.dk/channellogos/icon/3.png", "https://epg-images.tv2.dk/channellogos/logo/3.png", "https://epg-images.tv2.dk/channellogos/svg/3.svg", "da", 2);

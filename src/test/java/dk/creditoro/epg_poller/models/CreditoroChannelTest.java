@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 /**
 * CreditoroChannelTest
 */
-public class CreditoroChannelTest {
+class CreditoroChannelTest {
 	CreditoroChannel creditoroChannel = new CreditoroChannel("TV2", 
 			"https://epg-images.tv2.dk/channellogos/logo/3.png", 
 			"04bdd23d-75d5-4381-af97-628b7e531e0d");

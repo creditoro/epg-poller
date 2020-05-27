@@ -9,7 +9,7 @@ import org.junit.jupiter.api.*;
 /**
 * TVTidProgramTest
 */
-public class TVTidProgramTest {
+class TVTidProgramTest {
 	TVTidProgram tvTidProgram;
 	
 	TVTidProgramTest(){
