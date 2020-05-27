@@ -20,4 +20,4 @@ services:
 networks:
   web:
     external:
-      name: bridge
+      name: web
