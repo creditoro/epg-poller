@@ -59,7 +59,9 @@ public class HttpManager {
 
     public TVTidProgram getTvTidProductionsWithDesc(TVTidProduction tvTidProduction, int channelId){
         LOGGER.info("Getting TVTid productions with description.");
-        var responseAsTvTidProg = Unirest.get(String.format(TVTIDPROGRAMS, webUrlTV2, RESTVERSIONV1, channelId, tvTidProduction.getId())).
+        var responseAsTvTidProg = Unirest.get(String.format(TVTIDPROGRAMS, 
+                    webUrlTV2, RESTVERSIONV1, 
+                    channelId, tvTidProduction.getId())).
             asObject(TVTidPrograms.class);
         LOGGER.log(Level.INFO, "Status code: {0}", responseAsTvTidProg.getStatus());	
         return responseAsTvTidProg.getBody().getProgram();
