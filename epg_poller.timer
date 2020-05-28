@@ -1,0 +1,10 @@
+[Unit]
+Description=Run EPG poller every 2 hours.
+Requires=epg_poller.service
+
+[Timer]
+OnUnitInactiveSec=2h
+AccuracySec=5s
+
+[Install]
+WantedBy=timers.target
