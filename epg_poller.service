@@ -1,0 +1,11 @@
+[Unit]
+Description=Run EPG Poller.
+Wants=epg_poller.timer
+
+[Service]
+ExecStart=/usr/bin/java -jar target/epg_poller-0.0.1.jar
+Environment="SOME_ARG=1 API_URL=https://api.creditoro.nymann.dev API_WEBURLTV2=https://tvtid-api.api.tv2.dk/api/tvtid/ API_USER=epg-poller@creditoro.nymann.dev API_PASSWORD=4^CP^DBdMvHzkSsCo4&%"
+User=root
+
+[Install]
+WantedBy=multi-user.target
